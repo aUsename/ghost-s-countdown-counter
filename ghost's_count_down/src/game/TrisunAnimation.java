@@ -1,6 +1,6 @@
-package service;
+package game;
 
-public class History {
+public class TrisunAnimation {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub

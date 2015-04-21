@@ -4,23 +4,23 @@ import java.awt.LayoutManager;
 
 import javax.swing.JPanel;
 
-public class Time extends JPanel {
+public class TimePanel extends JPanel {
 
-	public Time() {
+	public TimePanel() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Time(LayoutManager layout) {
+	public TimePanel(LayoutManager layout) {
 		super(layout);
 		// TODO Auto-generated constructor stub
 	}
 
-	public Time(boolean isDoubleBuffered) {
+	public TimePanel(boolean isDoubleBuffered) {
 		super(isDoubleBuffered);
 		// TODO Auto-generated constructor stub
 	}
 
-	public Time(LayoutManager layout, boolean isDoubleBuffered) {
+	public TimePanel(LayoutManager layout, boolean isDoubleBuffered) {
 		super(layout, isDoubleBuffered);
 		// TODO Auto-generated constructor stub
 	}
