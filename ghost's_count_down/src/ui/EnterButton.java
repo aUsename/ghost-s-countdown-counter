@@ -15,17 +15,17 @@ public class EnterButton extends JLabel implements MouseListener {
 	static boolean isIn = false;
 	
 	public void ButtonStart(){
-		filePath = "graphics/button/enter0.png";
+		filePath = "button/enter0.png";
 		ButtonImage = new ImageIcon(filePath).getImage();
-		this.setBounds(300, 500, 415, 95);
+		this.setBounds(0, 0, 415, 95);
 	}
 	
 	public void paintComponent(Graphics g){
 		if(!isIn){
-			filePath = "graphics/button/enter0.png";
+			filePath = "button/enter0.png";
 			ButtonImage = new ImageIcon(filePath).getImage();
 		}else{
-			filePath = "graphics/button/enter1.png";
+			filePath = "button/enter1.png";
 			ButtonImage = new ImageIcon(filePath).getImage();
 		}
 		g.drawImage(ButtonImage,0,0,this.getWidth(),this.getHeight(),this);
@@ -52,12 +52,15 @@ public class EnterButton extends JLabel implements MouseListener {
 	@Override
 	public void mouseEntered(MouseEvent e) {
 		// TODO Auto-generated method stub
+		isIn = true;
+		this.repaint();
 		
 	}
 
 	@Override
 	public void mouseExited(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
+		isIn = false;
+		this.repaint();
 	}
 }
