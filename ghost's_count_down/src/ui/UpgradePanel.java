@@ -40,17 +40,17 @@ public class UpgradePanel extends JFrame{
         }  
   
         for (int i = 0; i < 5; i++) {  
-            line2[i] = new JButton(Integer.toString(i+1));  
+            line2[i] = new JButton(Integer.toString(i+6));  
            row2.add(line2[i]);  
         }  
  
         for (int i = 0; i < 5; i++) {  
-            line3[i] = new JButton(Integer.toString(i+1));  
+            line3[i] = new JButton(Integer.toString(i+11));  
            row2.add(line3[i]);  
         }  
  
         for (int i = 0; i < 5; i++) {  
-            line4[i] = new JButton(Integer.toString(i+1));   
+            line4[i] = new JButton(Integer.toString(i+16));   
            row2.add(line4[i]);  
         }   
         add(row2);  
@@ -63,9 +63,9 @@ public class UpgradePanel extends JFrame{
         setVisible(true);  
     }  
       
-	/*      
+	      
 	public static void main(String[] args){
 		UpgradePanel P = new UpgradePanel();
 	}
-	*/
+	
 }
