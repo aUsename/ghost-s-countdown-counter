@@ -7,8 +7,10 @@ import ui.ClockPanel;
 public class DoubleMode extends Mode{
 	
 	
+	
 	public DoubleMode(Set s){
 		super(s);
+		restTime = -1; 
 		// TODO Auto-generated constructor stub
 	}
 

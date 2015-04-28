@@ -12,22 +12,39 @@ import javax.swing.JLabel;
 public class EnterButton extends JLabel implements MouseListener {
 	Image ButtonImage = null;
 	String filePath = null;
-	static boolean isIn = false;
+	static boolean isIn = false, isPressed = false;
 	
+
+	
+	
+	public EnterButton(){
+		
+		
+		addMouseListener(this);	
+	}
+		
 	public void ButtonStart(){
 		filePath = "button/enter0.png";
 		ButtonImage = new ImageIcon(filePath).getImage();
-		this.setBounds(0, 0, 415, 95);
+		this.setBounds(0, 0, 415, 220);
+
 	}
 	
+	
+	
 	public void paintComponent(Graphics g){
-		if(!isIn){
+		if(isPressed){
+			filePath = "button/enter2.png";
+			ButtonImage = new ImageIcon(filePath).getImage();
+		}
+		else if(!isIn){
 			filePath = "button/enter0.png";
 			ButtonImage = new ImageIcon(filePath).getImage();
 		}else{
 			filePath = "button/enter1.png";
 			ButtonImage = new ImageIcon(filePath).getImage();
 		}
+		
 		g.drawImage(ButtonImage,0,0,this.getWidth(),this.getHeight(),this);
 	}
 
@@ -40,7 +57,7 @@ public class EnterButton extends JLabel implements MouseListener {
 	@Override
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
+		isPressed = true;
 	}
 
 	@Override

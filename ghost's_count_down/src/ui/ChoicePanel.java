@@ -3,8 +3,8 @@ package ui;
 import javax.swing.JPanel;
 
 public class ChoicePanel extends JPanel {
-     SingleButton single = new SingleButton();
-     DoubleButton doub = new DoubleButton();
-     ExitButton   exit = new ExitButton();
-     SetButton    set;
+     public SingleButton single = new SingleButton();
+     public DoubleButton doub = new DoubleButton();
+    // public ExitButton   exit = new ExitButton();
+     public SetButton    set;
 }
