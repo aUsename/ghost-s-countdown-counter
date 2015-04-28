@@ -1,6 +1,7 @@
 package game;
 
 import java.awt.Graphics;
+import java.awt.Image;
 
 import javax.swing.ImageIcon;
 
@@ -11,7 +12,7 @@ public class Pointer {
    double length;
    double width;
    
-   ImageIcon image;
+   Image image;
    
    public Pointer(double v){
 	   this();

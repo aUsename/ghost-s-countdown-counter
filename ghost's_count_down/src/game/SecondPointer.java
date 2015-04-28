@@ -8,10 +8,13 @@ public class SecondPointer extends Pointer {
 	
     public SecondPointer(){
     	super(1);
-    	image = new ImageIcon("second.");
+    	image = new ImageIcon("secondpointer.jpg").getImage();
     }
     
     public void draw(Graphics g){
-    	
+    	g.translate( g.getClipBounds().width/2, g.getClipBounds().height/2);
+      //g.drawImage();
+        g.translate(-g.getClipBounds().width/2,-g.getClipBounds().height/2);
+     
     }
 }

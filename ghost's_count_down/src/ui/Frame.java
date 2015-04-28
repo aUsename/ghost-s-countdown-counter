@@ -9,21 +9,21 @@ public class Frame extends JFrame  {
 		JFrame frame = new JFrame();		
 		frame.setLayout(null);
 		frame.setSize(1100, 700);
-		
-		
 		frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
+
 		
 		EnterPanel ep = new EnterPanel();
+		ep.setOpaque(false);
 		frame.add(ep);
 		ep.setBounds(0, 0, 1100, 700);
+		
 		ep.setLayout(null);
 		EnterButton eb = new EnterButton();
-		eb.setBounds(300, 500, 415, 95);		
 		ep.add(eb);
+		eb.setBounds(300, 500, 415, 95);		
+		
+		
 		frame.setVisible(true);
 	}
-
-	
-	
 
 }

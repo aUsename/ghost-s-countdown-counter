@@ -1,5 +1,6 @@
 package game;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -35,7 +36,17 @@ public class PlayerInfo {
 	   name = s ;
    }
    
-   
+   // for register or sign in
+   public static PlayerInfo CreatPlayer(String s) throws Exception{
+	   
+	   PlayerInfo player = new PlayerInfo(new Players(),s);
+	   ArrayList<PlayerInfo> playersArray =  player.fileSorce.getPlayers();
+	   for(PlayerInfo p : playersArray){
+		   if(p.name.equals(s))  return  p;
+	   }
+	  return player;
+	   
+   }
    
    
    public void initial(){
