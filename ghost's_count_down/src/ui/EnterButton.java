@@ -14,12 +14,19 @@ public class EnterButton extends JLabel implements MouseListener {
 	String filePath = null;
 	static boolean isIn = false;
 	
+<<<<<<< HEAD
 	
 	
 	public EnterButton(){
 		
 		
 		addMouseListener(this);
+=======
+	public void ButtonStart(){
+		filePath = "button/enter0.png";
+		ButtonImage = new ImageIcon(filePath).getImage();
+		this.setBounds(0, 0, 415, 220);
+>>>>>>> origin/master
 	}
 	
 	
