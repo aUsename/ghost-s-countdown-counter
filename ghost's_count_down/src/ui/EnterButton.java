@@ -17,7 +17,7 @@ public class EnterButton extends JLabel implements MouseListener {
 	public void ButtonStart(){
 		filePath = "button/enter0.png";
 		ButtonImage = new ImageIcon(filePath).getImage();
-		this.setBounds(0, 0, 415, 95);
+		this.setBounds(0, 0, 415, 220);
 	}
 	
 	public void paintComponent(Graphics g){
