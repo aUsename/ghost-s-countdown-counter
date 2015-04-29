@@ -17,6 +17,8 @@ public class EnterPanel extends JPanel {
 		//setBounds(0, 0, w, h);
 		eb = new EnterButton();
 		add(eb);
+		eb.setBounds(315, 450, 415, 220);
+
 	}
 	
 	public void paint(Graphics g){
