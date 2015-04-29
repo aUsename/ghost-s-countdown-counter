@@ -13,7 +13,7 @@ import javax.swing.JPanel;
 
 public class SetButton extends JButton {
 
-String sorce = "button"+File.separator+"set.png";
+    String sorce = "button"+File.separator+"set.png";
     
     //
     ImageIcon icon= new ImageIcon(sorce);
@@ -36,12 +36,12 @@ String sorce = "button"+File.separator+"set.png";
 		
 		
 		// change the content
-	    // ¡­¡­
+	    // ï¿½ï¿½ï¿½ï¿½
 		//
 		setBackground(null);
 		setIcon(new ImageIcon(image1));
 		setRolloverIcon(new ImageIcon(image2));
-		
+		setBorder(null);
 		setSize(a,b);
 	
 		

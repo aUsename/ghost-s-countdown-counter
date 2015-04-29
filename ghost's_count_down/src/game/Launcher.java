@@ -5,11 +5,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.JPanel;
 
 import service.Set;
 import ui.ChoicePanel;
+import ui.EnterPanel;
 import ui.Frame;
 import ui.GamePanel;
 import ui.RegisterPanel;
@@ -17,7 +20,9 @@ import ui.SetPanel;
 import ui.SplashWindow;
 
 
+
 public class Launcher implements KeyListener{
+	
 	
         boolean isOnGame = false;
 	     
@@ -40,10 +45,64 @@ public class Launcher implements KeyListener{
 	    
 	  
 	    public Launcher(){
-	        f.addKeyListener(this);	
-	        choice = new ChoicePanel();
+	    	Sign s = new Sign(); 
+	    	new SplashWindow(s);
+	    	f.addKeyListener(this);	
+	        
+	    	 while(true){
+	        	if(s.sign){
+	        		f.setVisible(true);
+	        		break;
+	        	}
+	        }	   
+	        EnterPanel ep = new EnterPanel(frame.getWidth(),frame.getHeight());
+	        ep.eb.addMouseListener(new MouseListener(){
+	        	@Override
+	        	public void mouseClicked(MouseEvent e) {
+	        		// TODO Auto-generated method stub
+                    	        		
+	        	}
+
+	        	@Override
+	        	public void mousePressed(MouseEvent e) {
+	        		// TODO Auto-generated method stub
+	        		
+	        	}
+
+	        	@Override
+	        	public void mouseReleased(MouseEvent e) {
+	        		// TODO Auto-generated method stub
+	        		enterChoices();
+	        	}
+
+	        	@Override
+	        	public void mouseEntered(MouseEvent e) {
+	        		// TODO Auto-generated method stub
+	        		ep.eb.isIn = true;
+	        		ep.eb.repaint();
+	        		
+	        	}
+
+	
+	        	@Override
+	        	public void mouseExited(MouseEvent e) {
+	        		// TODO Auto-generated method stub
+	        		ep.eb.isIn = false;
+	        		ep.eb.repaint();
+	        	}
+	        });
+	           setCurrentPanel(ep);
+	       
+	           
+	    }
+	    
+	    
+	    
+	    public void enterChoices(){
+	    	choice = new ChoicePanel(f.getWidth(),f.getHeight());
 	    	setCurrentPanel(choice);
 	        
+	    	/*
 	        choice.exit.addActionListener(new ActionListener(){
 
 				@Override
@@ -54,6 +113,7 @@ public class Launcher implements KeyListener{
 	        	
 	        });
 	        
+	        */
 	        choice.single.addActionListener(new ActionListener(){
 	        	public void actionPerformed(ActionEvent e){
 	        		// a  registerPanel
@@ -93,23 +153,18 @@ public class Launcher implements KeyListener{
 	        	}
 	        });
 	        
-	        
+	       /* 
 	        choice.set.addActionListener(new ActionListener(){
 	        	public void actionPerformed(ActionEvent e){
 	        		currentPanel.add(new SetPanel());
 	        		
 	        	}
-	        });
+	        });*/
+	        
 	    }
 	    
-	    
-	    
 
-	    
-	    
-	    
-	    
-	    
+	        
 	   
 	    public  void  startSingleMode(PlayerInfo player){
 	    	
@@ -135,8 +190,6 @@ public class Launcher implements KeyListener{
 	    
 
 
-
-
 		public void startDoubleMode(){
 	        
 			gamePanel = new GamePanel();
@@ -156,10 +209,11 @@ public class Launcher implements KeyListener{
 	    
 		private void setCurrentPanel(JPanel panel) {
 			// TODO Auto-generated method stub
-	    	
-	    	frame.remove(currentPanel);
+	    	if(currentPanel!=null)
+	    		frame.remove(currentPanel);
 		    currentPanel = panel; 
 		    frame.add(currentPanel);
+		    currentPanel.setBounds(0, 0, frame.getWidth(), frame.getHeight());
 		}
 	  
 	    
@@ -171,8 +225,9 @@ public class Launcher implements KeyListener{
 	    
 	    public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		    new SplashWindow();
+		    
 		    new Launcher();
+		    
 		    
 	    }
 
@@ -232,4 +287,6 @@ public class Launcher implements KeyListener{
             
 		}
 
+			
+		
 }
