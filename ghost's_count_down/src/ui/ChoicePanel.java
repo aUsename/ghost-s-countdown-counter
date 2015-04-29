@@ -6,6 +6,7 @@ import java.awt.Graphics;
 import javax.swing.JPanel;
 
 public class ChoicePanel extends JPanel {
+<<<<<<< HEAD
 	
 	
      public SingleButton single ;
@@ -38,4 +39,10 @@ public class ChoicePanel extends JPanel {
     	 g.setColor(Color.white);
     	 g.fillRect(0, 0, getWidth(), getHeight());
      }
+=======
+	public SingleButton single = new SingleButton();
+     public DoubleButton doub = new DoubleButton();
+     public ExitButton   exit = new ExitButton(40,40);
+     public SetButton    set;
+>>>>>>> origin/master
 }
