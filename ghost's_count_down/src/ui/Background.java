@@ -1,11 +1,11 @@
 package ui;
 
-import java.awt.LayoutManager;
-
-import javax.swing.JPanel;
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
 
 public class Background extends JPanel {
-
+	
 	public Background() {
 		// TODO Auto-generated constructor stub
 	}
@@ -24,5 +24,6 @@ public class Background extends JPanel {
 		super(layout, isDoubleBuffered);
 		// TODO Auto-generated constructor stub
 	}
+	
 
 }
