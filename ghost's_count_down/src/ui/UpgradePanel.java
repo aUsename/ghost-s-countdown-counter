@@ -61,11 +61,13 @@ public class UpgradePanel extends JFrame{
         row3.add(quit);   
         add(row3);
         setVisible(true);  
+        
+        Background a = new Background();
     }  
       
 	      
-	public static void main(String[] args){
+/*	public static void main(String[] args){
 		UpgradePanel P = new UpgradePanel();
-	}
+	}*/
 	
 }
