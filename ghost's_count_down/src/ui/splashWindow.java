@@ -1,5 +1,7 @@
 package ui;
 
+import game.Sign;
+
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -21,9 +23,10 @@ public class SplashWindow extends JWindow implements Runnable{
 	ImageIcon  icon;
 	Image      image;
     Thread     thread;
-   
-	public SplashWindow(){
-		
+    Sign    s;
+    
+	public SplashWindow(Sign s){
+		this.s =s ;
 		setSize(w,h);
 		Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
 		setLocation((screen.width-w)/2,(screen.height-h)/2);
@@ -40,13 +43,6 @@ public class SplashWindow extends JWindow implements Runnable{
 		thread.start();
 	}
 	
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		
-        new SplashWindow();
-                
-        System.out.println("f dklfjkdfkdj");
-	}
 
 	@Override
 	public void run() {
@@ -60,7 +56,7 @@ public class SplashWindow extends JWindow implements Runnable{
 		
 		
 		dispose();
-		
+		s.sign = true;
 	}
 	
 	

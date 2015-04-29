@@ -1,16 +1,35 @@
 package ui;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
+
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class Frame extends JFrame  {
+<<<<<<< HEAD
 	private static ImageIcon background;
 	
+=======
+	
+	int width=1100,height=700;
+	
+	public Frame(){
+	    setLayout(null);
+	    Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
+	    setLocation((screen.width-width)/2,(screen.height-height)/2);
+		setSize(width,height);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+	    
+	}
+>>>>>>> origin/master
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+<<<<<<< HEAD
+=======
 		JFrame frame = new JFrame();		
 		frame.setLayout(null);
 
@@ -44,8 +63,13 @@ public class Frame extends JFrame  {
 		frame.getLayeredPane().add(label, new Integer(Integer.MIN_VALUE));
 //>>>>>>> origin/master
 		frame.setVisible(true);
+>>>>>>> origin/master
 		
+		Frame frame = new Frame();	
 		
+		EnterPanel ep = new EnterPanel(frame.getWidth(),frame.getHeight());
+        frame.add(ep);
+	
 	}
 
 }
