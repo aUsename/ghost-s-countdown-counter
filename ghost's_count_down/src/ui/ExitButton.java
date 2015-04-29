@@ -46,6 +46,8 @@ public class ExitButton extends JButton{
 		setSize(a,b);
 	
 	}
+    
+    
 
 	
    // just for test

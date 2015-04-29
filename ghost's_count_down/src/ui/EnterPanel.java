@@ -8,14 +8,25 @@ import javax.swing.JPanel;
 
 public class EnterPanel extends JPanel {
 	
+	public EnterButton eb;
+	
+	public EnterPanel(int w,int h){
+	    
+		setLayout(null);
+		setOpaque(false);
+		//setBounds(0, 0, w, h);
+		eb = new EnterButton();
+		add(eb);
+	}
+	
 	public void paint(Graphics g){
           
 		  ImageIcon imgIcon = new ImageIcon("button/enterBackground.png");
 		  Image img = imgIcon.getImage();
-		  g.drawImage(img,0,0,1100,700,null);	  
+		  g.drawImage(img,0,0,getWidth(),getHeight(),null);
+		  
 		  super.paintChildren(g);
 	  }
 	 
-	
 	
 }

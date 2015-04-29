@@ -1,8 +1,8 @@
 package ui;
 
 import java.awt.*;
-
 import javax.swing.*;
+
 
 public class UpgradePanel extends JFrame{  
 	  
@@ -60,7 +60,9 @@ public class UpgradePanel extends JFrame{
         row3.add(back); 
         row3.add(quit);   
         add(row3);
+        
         setVisible(true);  
+        
     }  
       
 	      
