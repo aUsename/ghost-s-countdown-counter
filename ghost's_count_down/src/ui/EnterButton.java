@@ -9,23 +9,22 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
-public class EnterButton extends JLabel {
+public class EnterButton extends JButton implements MouseListener{
 	Image ButtonImage = null;
 	String filePath = null;
-<<<<<<< HEAD
-	public boolean isIn = false;
-=======
+
+	
+
 	static boolean isIn = false, isPressed = false;
 	
 
->>>>>>> origin/master
+
 	
 
 	
 	public EnterButton(){
-<<<<<<< HEAD
-		setBounds(315, 450, 415, 220);
-=======
+
+		
 		
 		
 		addMouseListener(this);	
@@ -36,7 +35,7 @@ public class EnterButton extends JLabel {
 		ButtonImage = new ImageIcon(filePath).getImage();
 		this.setBounds(0, 0, 415, 220);
 
->>>>>>> origin/master
+
 	}
 	
 	
@@ -56,8 +55,6 @@ public class EnterButton extends JLabel {
 		g.drawImage(ButtonImage,0,0,this.getWidth(),this.getHeight(),this);
 	}
 
-<<<<<<< HEAD
-=======
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
@@ -91,5 +88,4 @@ public class EnterButton extends JLabel {
 		isIn = false;
 		this.repaint();
 	}
->>>>>>> origin/master
 }
