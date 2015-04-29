@@ -68,6 +68,7 @@ public class EnterButton extends JLabel {
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
 		isPressed = true;
+		this.repaint();
 	}
 
 	@Override

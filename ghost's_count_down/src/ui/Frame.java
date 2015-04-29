@@ -1,12 +1,17 @@
 package ui;
 
+<<<<<<< HEAD
+=======
 import java.awt.Dimension;
+>>>>>>> origin/master
 import java.awt.Toolkit;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+
 
 public class Frame extends JFrame  {
 <<<<<<< HEAD
@@ -29,10 +34,20 @@ public class Frame extends JFrame  {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 <<<<<<< HEAD
+		JFrame frame = new JFrame();
+		Toolkit kit = Toolkit.getDefaultToolkit();
+		java.awt.Dimension screenSize = kit.getScreenSize();
+		int screenWidth = screenSize.width;
+		int screenHeight = screenSize.height;
+=======
+<<<<<<< HEAD
 =======
 		JFrame frame = new JFrame();		
 		frame.setLayout(null);
+>>>>>>> origin/master
 
+		frame.setLayout(null);
+		frame.setLocation((screenWidth-1100)/2, (screenHeight-700)/2);
 		frame.setSize(1100, 700);
 		frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
