@@ -63,10 +63,9 @@ public class UpgradePanel extends JFrame{
         
         setVisible(true);  
         
-<<<<<<< HEAD
+
         Background a = new Background();
-=======
->>>>>>> origin/master
+
     }  
       
 	      

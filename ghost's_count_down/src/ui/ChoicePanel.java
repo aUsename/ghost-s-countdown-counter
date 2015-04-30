@@ -17,7 +17,8 @@ public class ChoicePanel extends JPanel {
      int a,b;
      
      public ChoicePanel(int w,int h){
-         a = w/5;
+    	 
+        /* a = w/5;
          b = h/5;
     	 setOpaque(false);
     	 setLayout(null);
@@ -38,6 +39,7 @@ public class ChoicePanel extends JPanel {
      public void paintComponent(Graphics g){
     	 g.setColor(Color.white);
     	 g.fillRect(0, 0, getWidth(), getHeight());
+     }*/
      }
 	
 }
