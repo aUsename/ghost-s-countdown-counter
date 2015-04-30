@@ -9,11 +9,17 @@ public class GamePanel extends JPanel{
     
     public GamePanel(){
     	setLayout(null);
+    	
+    }
+    
+    public void addComponent(){
     	add(clockPanel);
     	add(timePanel);
     	
-    	clockPanel.setBounds(0,0,getWidth(),getHeight()/6);
-    	timePanel.setBounds(0,getHeight()/6,getWidth(),getHeight()*5/6);
+    	timePanel.setBounds(0,0,getWidth(),getHeight()/6);
+    	clockPanel.setBounds(getWidth()/8,getHeight()/8,getWidth()*6/8,getHeight()*7/8);
+    	repaint();
+    	
     }
     
     public void paint(){

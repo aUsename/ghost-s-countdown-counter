@@ -31,18 +31,11 @@ public class Frame extends JFrame  {
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 
 		
-		EnterPanel ep = new EnterPanel(width,height);
-		ep.setOpaque(false);
-		
-		
-		
 
-		add(ep);
-		ep.setBounds(0, 0, 1100, 700);
 
 		
 		
-		setVisible(true);
+		//setVisible(true);
 		
 	    
 	}

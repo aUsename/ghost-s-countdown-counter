@@ -48,7 +48,7 @@ public class SplashWindow extends JWindow implements Runnable{
 	public void run() {
 		// TODO Auto-generated method stub
 		try {
-			Thread.sleep(3000);
+			Thread.sleep(2000);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

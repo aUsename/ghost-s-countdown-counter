@@ -2,6 +2,8 @@ package game;
 
 import java.awt.Graphics;
 import java.awt.Image;
+import java.io.File;
+
 import javax.swing.ImageIcon;
 
 public class Clock {
@@ -11,7 +13,7 @@ public class Clock {
 	HourPointer hour = new HourPointer();
 	Ball ball ;
 	int  number;
-	Image  image = new ImageIcon("clock.jpg").getImage();
+	Image  image = new ImageIcon("clock"+File.separator+"clock.jpg").getImage();
 	Image  lineofimage = new ImageIcon("line.jpg").getImage();
 	
 	//deadArea[0] ,the shadow area starts with
@@ -52,11 +54,11 @@ public class Clock {
 	
 	public void draw(Graphics g) {
 		// TODO Auto-generated method stub
-		g.translate( g.getClipBounds().width/2, g.getClipBounds().height/2);
+		
 	  //if(drawLine)  g.drawImge(imageofline);
-	  //g.drawImage(image);
-		drawShadow(g);
-	    g.translate(-g.getClipBounds().width/2,-g.getClipBounds().height/2);
+	    g.drawImage(image,0,0,g.getClipBounds().width,g.getClipBounds().height,0,0,image.getWidth(null),image.getHeight(null),null);
+	  //drawShadow(g);
+	   
 	   
 		minute.draw(g);
 		hour.draw(g);
