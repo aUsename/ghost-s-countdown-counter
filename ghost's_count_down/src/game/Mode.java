@@ -4,7 +4,7 @@ import service.Set;
 import ui.ClockPanel;
 import ui.TimePanel;
 
-public class Mode {
+public abstract class Mode {
 	boolean isOnGame = true;
     boolean isPause = false;
     boolean isAlive = true;
@@ -49,9 +49,7 @@ public class Mode {
     
     
     
-    public void go(){
-    	
-    }
+    abstract public void go();
     
     
     

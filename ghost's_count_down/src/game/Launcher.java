@@ -55,30 +55,35 @@ public class Launcher implements KeyListener{
 	        		break;
 	        	}
 	        }	   
+	    	 
 	        EnterPanel ep = new EnterPanel(frame.getWidth(),frame.getHeight());
-	        ep.eb.addMouseListener(new MouseListener(){
+	        
+	        /*ep.eb.addMouseListener(new MouseListener(){
 	        	@Override
 	        	public void mouseClicked(MouseEvent e) {
 	        		// TODO Auto-generated method stub
-                    	        		
+                    enterChoices();    System.out.print("fd");  		
 	        	}
 
 	        	@Override
 	        	public void mousePressed(MouseEvent e) {
 	        		// TODO Auto-generated method stub
-	        		
+	        		ep.eb.isPressed = true;
+	        		ep.eb.repaint();
 	        	}
 
 	        	@Override
 	        	public void mouseReleased(MouseEvent e) {
 	        		// TODO Auto-generated method stub
-	        		enterChoices();
+	        		ep.eb.isPressed = false;
+	        		ep.eb.repaint();
+	        		
 	        	}
 
 	        	@Override
 	        	public void mouseEntered(MouseEvent e) {
 	        		// TODO Auto-generated method stub
-	        		ep.eb.isIn = true;
+	        		ep.eb.isIn  = true;
 	        		ep.eb.repaint();
 	        		
 	        	}
@@ -91,9 +96,23 @@ public class Launcher implements KeyListener{
 	        		ep.eb.repaint();
 	        	}
 	        });
-	           setCurrentPanel(ep);
-	       
-	           
+	          */
+	        
+	        
+	        ep.eb.addActionListener(new ActionListener(){
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					// TODO Auto-generated method stub
+					
+					enterChoices();
+					
+				}
+	        	
+	        });
+	        
+	        setCurrentPanel(ep);
+	       	           
 	    }
 	    
 	    
@@ -102,7 +121,7 @@ public class Launcher implements KeyListener{
 	    	choice = new ChoicePanel(f.getWidth(),f.getHeight());
 	    	setCurrentPanel(choice);
 	        
-	    	/*
+	    	
 	        choice.exit.addActionListener(new ActionListener(){
 
 				@Override
@@ -113,10 +132,11 @@ public class Launcher implements KeyListener{
 	        	
 	        });
 	        
-	        */
+	        
 	        choice.single.addActionListener(new ActionListener(){
 	        	public void actionPerformed(ActionEvent e){
-	        		// a  registerPanel
+	        	/*	
+	        	 * // a  registerPanel
 	        		register = new RegisterPanel();
 	    	    	currentPanel.add(register);
 	    	    	
@@ -124,9 +144,9 @@ public class Launcher implements KeyListener{
 
 						@Override
 						//register.check(image, observer)
-						public void actionPerformed(ActionEvent e) {
+				        	public void actionPerformed(ActionEvent e) {
 							// TODO Auto-generated method stub
-							String  s = register.getText();
+							String  s = null;
 							
 							try {
 								PlayerInfo  player = PlayerInfo.CreatPlayer(s);
@@ -140,10 +160,13 @@ public class Launcher implements KeyListener{
 							
 						}
 	    	        	
-	    	        });
-	    	        
-
+	    	        });    	        
+                  */
+	        	
+	        	startSingleMode(null);
 	        	}
+	        	
+	        		
 	        });
 	        
 	        
@@ -175,15 +198,18 @@ public class Launcher implements KeyListener{
 	    	gamePanel = new GamePanel();
 	    	setCurrentPanel(gamePanel);
 	    	Mode game = new SingleMode(setter,player);
+	    	
 	    	gamePanel.clockPanel = game.clockPanel;
 	    	gamePanel.timePanel = game.timePanel;
+	    	gamePanel.addComponent();
+	    	
 	    	currentMode = game;
 	    	isSingleMode = true;
 	    	
 
+	    	System.out.println("it is ok before to play");
 	    	
-	    	
-	    	game.go();
+	    	//game.go();
 	    }
 	    
 	    

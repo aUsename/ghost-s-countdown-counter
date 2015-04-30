@@ -21,15 +21,16 @@ public class Pointer {
    
    
    public Pointer(){
-  	   angle = -90;
+  	   angle = 270;
    }
    
    
    public void rotate(){
-	   angle += 360/circleTime;
+	   angle += (360/circleTime);
 	   angle %= 360 ;
    }
  
+   
    public void draw(Graphics g){
 	   
    }
