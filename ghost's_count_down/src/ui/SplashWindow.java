@@ -1,6 +1,5 @@
 package ui;
 
-import game.Sign;
 
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -15,18 +14,23 @@ import javax.swing.JPanel;
 import javax.swing.JWindow;
 
 
-public class SplashWindow extends JWindow implements Runnable{
+public class SplashWindow extends JWindow {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5023764071579967506L;
+
 	int w=400,h=270;
 	
 	String sorce = "background"+File.separator+"splash.jpg";
 	ImageIcon  icon;
 	Image      image;
-    Thread     thread;
-    Sign    s;
+
+ 
     
-	public SplashWindow(Sign s){
-		this.s =s ;
+	public SplashWindow(){
+		
 		setSize(w,h);
 		Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
 		setLocation((screen.width-w)/2,(screen.height-h)/2);
@@ -39,13 +43,12 @@ public class SplashWindow extends JWindow implements Runnable{
 		add(panel);
 		
 		setVisible(true);
-		thread = new Thread(this);
-		thread.start();
+		
 	}
 	
 
-	@Override
-	public void run() {
+
+	public void start() {
 		// TODO Auto-generated method stub
 		try {
 			Thread.sleep(2000);
@@ -56,7 +59,6 @@ public class SplashWindow extends JWindow implements Runnable{
 		
 		
 		dispose();
-		s.sign = true;
 	}
 	
 	

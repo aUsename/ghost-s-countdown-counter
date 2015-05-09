@@ -4,6 +4,10 @@ import javax.swing.JPanel;
 
 public class GamePanel extends JPanel{
     
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5621485351345206242L;
 	public ClockPanel clockPanel;
     public TimePanel  timePanel;
     
@@ -18,6 +22,7 @@ public class GamePanel extends JPanel{
     	
     	timePanel.setBounds(0,0,getWidth(),getHeight()/6);
     	clockPanel.setBounds(getWidth()/8,getHeight()/8,getWidth()*6/8,getHeight()*7/8);
+    	clockPanel.pointers.setBounds(0,0,clockPanel.getWidth(),clockPanel.getHeight());
     	repaint();
     	
     }
@@ -28,9 +33,5 @@ public class GamePanel extends JPanel{
     	timePanel.repaint();
     }
     
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-	}
 
 }

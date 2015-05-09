@@ -26,16 +26,9 @@ public class EnterPanel extends JPanel {
           
 		  ImageIcon imgIcon = new ImageIcon("background/enterBackground.png");
 		  Image img = imgIcon.getImage();
-		  g.drawImage(img,0,0,getWidth(),getHeight(),0,0,img.getWidth(null),img.getHeight( null),null);
-		  
+		  g.drawImage(img,0,0,getWidth(),getHeight(),0,0,img.getWidth(null),img.getHeight( null),null);		  
 		  super.paintChildren(g);
 	  }
 	 
-	public static void main(String[] args){
-		Frame f = new Frame();
-		f.setVisible(true);
-        EnterPanel e = new EnterPanel(f.getWidth(), f.getHeight()) ;
-		f.add(e);
-        e.setBounds(0,0,f.getWidth(), f.getHeight());
-	}
+
 }

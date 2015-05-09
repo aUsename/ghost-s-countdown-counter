@@ -19,4 +19,10 @@ public class DoubleMode extends Mode{
 		
 	}
 
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

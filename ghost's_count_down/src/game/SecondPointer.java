@@ -1,6 +1,8 @@
 package game;
 
+import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.io.File;
 
 import javax.swing.ImageIcon;
@@ -9,27 +11,27 @@ public class SecondPointer extends Pointer {
 	
     public SecondPointer(){
     	super(1);
+    	length = 200;
+    	angle = 270;
+ 	     width = 5;
     	image = new ImageIcon("clock"+File.separator+"pointer.jpg").getImage();
     }
     
-    public void draw(Graphics g){
-       int  x1,y1,x2,y2;
- 	   x1 = (int) (    length*Math.cos(Math.toRadians(angle))  + width*Math.sin(Math.toRadians(angle)) ); 
- 	   y1 = (int) (    length*Math.sin(Math.toRadians(angle))  - width*Math.cos(Math.toRadians(angle)) );
+    
+    public void draw(Graphics2D g){
  	   
- 	   x2 = (int) (    length*Math.cos(Math.toRadians(angle))  - width*Math.sin(Math.toRadians(angle)) ); 
- 	   y2 = (int) (    length*Math.sin(Math.toRadians(angle))  + width*Math.cos(Math.toRadians(angle)) );
- 	   
- 	   int tail = (int) (length/4);
- 	   int  tailX,tailY;
- 	   tailX = (int) (  -  tail*Math.cos(Math.toRadians(angle))   ); 
- 	   tailY = (int) (  -  tail*Math.sin(Math.toRadians(angle))   );
- 	   
- 	   
- 	   
+     	 int tail = (int) (length/4);
+   	   
     	  g.translate( g.getClipBounds().width/2, g.getClipBounds().height/2);
-    	  g.drawImage(image, tailX, tailY, x1,y1, 0, 0, image.getWidth(null),image.getWidth(null), null);
-       g.drawImage(image, tailX, tailY, x2,y2, 0, 0, image.getWidth(null),image.getWidth(null), null);
-       g.translate(-g.getClipBounds().width/2,-g.getClipBounds().height/2);
-    }
+    	  g.rotate(Math.toRadians(angle));
+    	  g.drawImage(image,-tail,(int)-width/2,(int)length,(int)width,0,0,image.getWidth(null),image.getHeight(null),null);
+    	  /*g.setColor(Color.blue);
+          g.fillRect(-tail, (int)-width/2,   (int)length,   (int)width/2);
+          g.setColor(Color.red);
+          g.fillRect(-tail,  0, (int)length, (int)width/2);
+    	  */
+    	  g.rotate(Math.toRadians(-angle));
+    	  g.translate( -g.getClipBounds().width/2, -g.getClipBounds().height/2);
+     }
+
 }

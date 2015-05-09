@@ -1,12 +1,11 @@
 package ui;
 
-import java.awt.event.*;
 import java.awt.*;
 import java.awt.image.*;
 import java.io.*;
-
 import javax.imageio.ImageIO;
 import javax.swing.*;
+
 
 public class RegisterSuccessPanel extends JPanel {
 		public JButton confirm;
@@ -35,7 +34,7 @@ public class RegisterSuccessPanel extends JPanel {
 		}
 		
 		
-	/*public static void main(String[] args){
+	public static void main(String[] args){
 		    RegisterSuccessPanel a = new RegisterSuccessPanel();
 		    JFrame  f =new JFrame();
 		    Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
@@ -44,7 +43,7 @@ public class RegisterSuccessPanel extends JPanel {
 		    f.setVisible(true);
 		    f.add(a);
 		    
-	}*/
+	}
 		
 }
 

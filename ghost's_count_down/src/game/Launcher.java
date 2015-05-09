@@ -1,15 +1,14 @@
 package game;
 
-import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
+import java.io.File;
 
 import javax.swing.JPanel;
 
+import service.Music;
 import service.Set;
 import ui.ChoicePanel;
 import ui.EnterPanel;
@@ -20,109 +19,60 @@ import ui.SetPanel;
 import ui.SplashWindow;
 
 
-
 public class Launcher implements KeyListener{
 	
 	
-        boolean isOnGame = false;
-	     
-	    Mode  currentMode; 
-	    boolean isSingleMode = true; 
-	    RegisterPanel register;
-	    
-	    Frame f = new Frame();
-	    
-	  //  TimePanel timePanel;
-	    
-	    Container frame = f.getContentPane();
-	    ChoicePanel choice;
-	    GamePanel gamePanel; 
-	    JPanel currentPanel = null;
-	    
-	    Set setter = new Set();
-	    
-	    
-	    
+        boolean      isOnGame     = false; 
+	    Mode         currentMode; 
+	    boolean      isSingleMode = true; 
+	    Frame        frame        = new Frame();
+	    ChoicePanel  choicePanel;
+	    GamePanel    gamePanel; 
+	    JPanel       currentPanel = null;
+	    Set          setter       = new Set();
+	    PlayerInfo   player;
+	    int          currentLocation;
+	    Upgrade      upgrade;
 	  
+
+	    
 	    public Launcher(){
-	    	Sign s = new Sign(); 
-	    	new SplashWindow(s);
-	    	f.addKeyListener(this);	
-	        
-	    	 while(true){
-	        	if(s.sign){
-	        		f.setVisible(true);
-	        		break;
-	        	}
-	        }	   
-	    	 
+	    
+	    	new SplashWindow().start();
+            frame.setVisible(true);
+            frame.addKeyListener(this);
+            
+            Music mu = new Music("music"+File.separator+"background.wav"); 
+            new  Thread(mu).start();
+            
 	        EnterPanel ep = new EnterPanel(frame.getWidth(),frame.getHeight());
-	        
-	        /*ep.eb.addMouseListener(new MouseListener(){
-	        	@Override
-	        	public void mouseClicked(MouseEvent e) {
-	        		// TODO Auto-generated method stub
-                    enterChoices();    System.out.print("fd");  		
-	        	}
-
-	        	@Override
-	        	public void mousePressed(MouseEvent e) {
-	        		// TODO Auto-generated method stub
-	        		ep.eb.isPressed = true;
-	        		ep.eb.repaint();
-	        	}
-
-	        	@Override
-	        	public void mouseReleased(MouseEvent e) {
-	        		// TODO Auto-generated method stub
-	        		ep.eb.isPressed = false;
-	        		ep.eb.repaint();
-	        		
-	        	}
-
-	        	@Override
-	        	public void mouseEntered(MouseEvent e) {
-	        		// TODO Auto-generated method stub
-	        		ep.eb.isIn  = true;
-	        		ep.eb.repaint();
-	        		
-	        	}
-
-	
-	        	@Override
-	        	public void mouseExited(MouseEvent e) {
-	        		// TODO Auto-generated method stub
-	        		ep.eb.isIn = false;
-	        		ep.eb.repaint();
-	        	}
-	        });
-	          */
-	        
-	        
+	        setCurrentPanel(ep);
 	        ep.eb.addActionListener(new ActionListener(){
 
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					// TODO Auto-generated method stub
-					
 					enterChoices();
-					
 				}
-	        	
+        	
 	        });
-	        
-	        setCurrentPanel(ep);
-	       	           
 	    }
 	    
 	    
 	    
-	    public void enterChoices(){
-	    	choice = new ChoicePanel(f.getWidth(),f.getHeight());
-	    	setCurrentPanel(choice);
+	    
+	    private void enterChoices() {
+					// TODO Auto-generated method stub
+			choicePanel = new ChoicePanel(frame.getContentPane().getWidth(), frame.getContentPane().getHeight());		
+	        setCurrentPanel(choicePanel);
+	        choicePanel.grabFocus();
+	        choicePanel.addKeyListener(this);
+	        choicePanel.exit.addKeyListener(this);
+	        choicePanel.single.addKeyListener(this);
+	        choicePanel.doub.addKeyListener(this);
+	        choicePanel.set.addKeyListener(this);
 	        
-	    	
-	        choice.exit.addActionListener(new ActionListener(){
+	        choicePanel.exit.addActionListener(new ActionListener(){
 
 				@Override
 				public void actionPerformed(ActionEvent e) {
@@ -131,89 +81,54 @@ public class Launcher implements KeyListener{
 				}
 	        	
 	        });
+    
 	        
-	        
-	        choice.single.addActionListener(new ActionListener(){
-	        	public void actionPerformed(ActionEvent e){
-	        	/*	
-	        	 * // a  registerPanel
-	        		register = new RegisterPanel();
-	    	    	currentPanel.add(register);
-	    	    	
-	    	        register.confirm.addActionListener(new ActionListener(){
+	        choicePanel.set.addActionListener(new ActionListener(){
 
-						@Override
-						//register.check(image, observer)
-				        	public void actionPerformed(ActionEvent e) {
-							// TODO Auto-generated method stub
-							String  s = null;
-							
-							try {
-								PlayerInfo  player = PlayerInfo.CreatPlayer(s);
-								currentPanel.remove(register);
-								startSingleMode(player);
-							} catch (Exception e1) {
-								// TODO Auto-generated catch block
-								e1.printStackTrace();
-							}
-							
-							
-						}
-	    	        	
-	    	        });    	        
-                  */
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					// TODO Auto-generated method stub
+					new SetPanel(choicePanel.getWidth()/3,choicePanel.getHeight()/2,setter);
+				    
+				}
 	        	
-	        	startSingleMode(null);
-	        	}
+	        });
+
+	        
+	        choicePanel.single.addActionListener(new ActionListener(){
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					// TODO Auto-generated method stub
+					
+					register();
+				}
 	        	
-	        		
 	        });
 	        
 	        
-	        choice.doub.addActionListener(new ActionListener(){
-	        	public void actionPerformed(ActionEvent e){
-	        		startDoubleMode();
-	        	}
+	        choicePanel.doub.addActionListener(new ActionListener(){
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					// TODO Auto-generated method stub
+					
+				}
+	        	
 	        });
-	        
-	       /* 
-	        choice.set.addActionListener(new ActionListener(){
-	        	public void actionPerformed(ActionEvent e){
-	        		currentPanel.add(new SetPanel());
-	        		
-	        	}
-	        });*/
-	        
 	    }
-	    
 
-	        
+	    void upgrade(){
+	    	if(upgrade!=null){
+	    		upgrade.up.frame.dispose();
+	    	}
+	    	upgrade = new Upgrade(this);
+	    	
+	    	new Thread(upgrade).start();
+	    	
+	    }
 	   
-	    public  void  startSingleMode(PlayerInfo player){
-	    	
-	    	
-	    
-	    	
-	    	isOnGame = true;
-	    	gamePanel = new GamePanel();
-	    	setCurrentPanel(gamePanel);
-	    	Mode game = new SingleMode(setter,player);
-	    	
-	    	gamePanel.clockPanel = game.clockPanel;
-	    	gamePanel.timePanel = game.timePanel;
-	    	gamePanel.addComponent();
-	    	
-	    	currentMode = game;
-	    	isSingleMode = true;
-	    	
-
-	    	System.out.println("it is ok before to play");
-	    	
-	    	//game.go();
-	    }
-	    
-	    
-	    
 
 
 		public void startDoubleMode(){
@@ -230,89 +145,108 @@ public class Launcher implements KeyListener{
 	    }
 	    
 		
-		
-		
+		private void register(){
+			RegisterPanel registerPanel = new RegisterPanel();
+			registerPanel.registerButton.addActionListener(new ActionListener(){
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					// TODO Auto-generated method stub
+					String name = registerPanel.getText();
+					try {
+						player = PlayerInfo.CreatPlayer(name);
+						registerPanel.frame.dispose();
+						upgrade();
+					} catch (Exception e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					
+				}
+				
+			});
+		}
 	    
-		private void setCurrentPanel(JPanel panel) {
+		void setCurrentPanel(JPanel panel) {
 			// TODO Auto-generated method stub
 	    	if(currentPanel!=null)
 	    		frame.remove(currentPanel);
 		    currentPanel = panel; 
 		    frame.add(currentPanel);
 		    currentPanel.setBounds(0, 0, frame.getWidth(), frame.getHeight());
+		    frame.repaint();
 		}
 	  
+	
+		private void comeback() {
+			// TODO Auto-generated method stub
+			if(isOnGame){
+				currentMode.isAlive = false;
+				currentMode.isOnGame = false;
+				            isOnGame = false;
+				setCurrentPanel(choicePanel);
+			    this.upgrade.up.frame.dispose();	
+			}
+		}
 	    
-	    
-	    
-	    
-	    
-	    
-	    
+
+		
 	    public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		    
 		    new Launcher();
-		    
-		    
-	    }
-
-	    
-	    
-	    public void comeBack(){
-	    	if(isOnGame){
-	    		currentMode.isAlive = false;
-	    		setCurrentPanel(choice);
-	    	}
 	    }
 
 
-	    
+
+
 		@Override
 		public void keyTyped(KeyEvent e) {
 			// TODO Auto-generated method stub
 			
 		}
+
+
+
+
 		@Override
 		public void keyPressed(KeyEvent e) {
 			// TODO Auto-generated method stub
+			if(e.getKeyCode()==Set.shortcutLaunch){
+				if(isOnGame){
+					currentMode.launch();
+				}
+				else if(currentPanel == choicePanel){
+					
+				}
+			}
+			if(e.getKeyCode()== Set.shortcutPause){
+				if(isOnGame){
+					Mode.isPause = !Mode.isPause;
+				}
+				
+			}
 			
+			if(e.getKeyCode() == Set.shortcutBack){
+				comeback();
+			}
+			if(e.getKeyCode()== Set.shortcutUp){
+				setter.setVolumeOfSound(+1);
+				
+			}
+			if(e.getKeyCode()== Set.shortcutDown){
+				setter.setVolumeOfMusic(-1);
+				
+			}
 		}
 
 
-		
-
+ 
 
 		@Override
 		public void keyReleased(KeyEvent e) {
 			// TODO Auto-generated method stub
-			if(e.getKeyCode() == Set.shortcutup){
-				setter.setVolumeOfMusic(1);
-			}
-			
-            if(e.getKeyCode() == Set.shortcutdown){
-            	setter.setVolumeOfMusic(-1);
-			}
-            
-            if(e.getKeyCode() == Set.shortcutPause){
-				currentMode.isPause =true;
-			}
-            
-            if(e.getKeyCode() == Set.shortcutlaunch){
-				
-			}
-            
-            if(e.getKeyCode() == Set.shortcutback){
-				
-			}
-            
-            if(e.getKeyCode() == Set.shortcutback){
-            	comeBack();
-            }
-              
-            
 		}
 
-			
+		
 		
 }

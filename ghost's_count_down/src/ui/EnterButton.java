@@ -24,8 +24,6 @@ public class EnterButton extends JButton{
 		setOpaque(false);
 		filePath = "button/enter0.png";
 		ButtonImage = new ImageIcon(filePath).getImage();
-		this.setBounds(0, 0, 415, 220);
-
 
 	}
 	

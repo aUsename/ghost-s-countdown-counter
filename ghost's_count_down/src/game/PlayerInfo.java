@@ -42,15 +42,19 @@ public class PlayerInfo {
 	   PlayerInfo player = new PlayerInfo(new Players(),s);
 	   ArrayList<PlayerInfo> playersArray =  player.fileSorce.getPlayers();
 	   for(PlayerInfo p : playersArray){
-		   if(p.name.equals(s))  return  p;
+		   if(p.name.equals(s)) {
+			   
+			   return  p;
+		   }
 	   }
+	   
 	  return player;
 	   
    }
    
    
    public void initial(){
-	   bestGrade = 0;
+	   bestGrade = 1;
 	   password = "123456";
 	   registerTime = Calendar.getInstance();
 	   registerTime.setTime(new Date());
@@ -81,7 +85,7 @@ public class PlayerInfo {
 		   
 	   }catch(IndexOutOfBoundsException e){
 		   System.out.println(e);
-		   System.out.println("initial error of player");
+		//   System.out.println("initial error of player");
 	   }
    }
    

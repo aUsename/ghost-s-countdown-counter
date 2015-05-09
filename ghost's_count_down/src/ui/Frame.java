@@ -14,7 +14,8 @@ import javax.swing.JPanel;
 
 public class Frame extends JFrame  {
 	
-	int width=1100,height=700;
+	public static int width=1100;
+	public static int height=700;
 	
 	public Frame(){
 		
@@ -26,17 +27,9 @@ public class Frame extends JFrame  {
 
 	
 		setLayout(null);
-		setLocation((screenWidth-1100)/2, (screenHeight-700)/2);
-		setSize(1100, 700);
+		setLocation((screenWidth-width)/2, (screenHeight-height)/2);
+		setSize(width, height);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-
-		
-
-
-		
-		
-		//setVisible(true);
-		
 	    
 	}
 	

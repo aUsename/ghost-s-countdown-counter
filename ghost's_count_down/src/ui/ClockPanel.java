@@ -7,17 +7,27 @@ import game.Clock;
 import javax.swing.JPanel;
 
 public class ClockPanel extends JPanel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2382691159846648191L;
 	Clock clock;
+	public PointerPanel pointers;
+
 	
 	public ClockPanel(Clock c) {
 		// TODO Auto-generated constructor stub
+		
+		setLayout(null);
 		clock = c ;
+		pointers = new PointerPanel(c);
+		add(pointers);
+		
 	}
 	
-	public void paint(Graphics g){
-		
+	@Override
+	public void paintComponent(Graphics g){
 		clock.draw(g);
-		
 	}
 
 }
