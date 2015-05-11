@@ -58,6 +58,7 @@ public class RegisterPanel extends JPanel{
 		    
 		    registerButton = new JButton("登陆");
 		    
+		    registerButton.setForeground(Color.LIGHT_GRAY);
 		    registerButton.setContentAreaFilled(false);
 		    registerButton.setBorder(null);
 		    imagePanel.add(registerButton);
@@ -77,6 +78,7 @@ public class RegisterPanel extends JPanel{
 		    
 		    //标签
 		    idLabel = new JLabel("玩家名");
+		    idLabel.setForeground(Color.LIGHT_GRAY);
 		    idLabel.setSize(frameWidth/2,frameHeight/10);
 		    idLabel.setLocation(frameWidth/8,frameHeight/5);
 		    idLabel.setVisible(true);
