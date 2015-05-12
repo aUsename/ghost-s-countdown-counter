@@ -10,8 +10,8 @@ import javax.swing.ImageIcon;
 public class MinutePointer extends Pointer {
 	
 	public MinutePointer(){
-		super(2);
-		angle = 180;
+		super(2.0);
+		angle = 360*Math.random();
 		length = 160;
 		width = 5;
 		image = new ImageIcon("clock"+File.separator+"pointer.jpg").getImage();

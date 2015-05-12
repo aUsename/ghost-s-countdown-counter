@@ -8,14 +8,14 @@ import ui.Frame;
 import ui.TimePanel;
 
 public abstract class Mode implements Runnable {
-	public double restTime; 
 	
+	public double restTime; 
 	boolean isOnGame = true;
     static boolean isPause  = false;
     boolean isAlive  = true;
-    boolean launchable = true;
-    long    timeOfLaunch;
-    long    timeOfPause;
+    Launcher launcher;
+ 
+    
     
     ClockPanel      clockPanel;
     TimePanel       timePanel;
@@ -28,7 +28,6 @@ public abstract class Mode implements Runnable {
     Ball ball  ;
     int  number;
     Clock clock  ;
-    
     Set setter;
     
     
@@ -45,7 +44,7 @@ public abstract class Mode implements Runnable {
         deadArea = clock.deadArea;
     	timePanel = new TimePanel();
     	number = 10; 
-    	timeOfPause = 1000;
+    	
       
     }
     
@@ -54,23 +53,9 @@ public abstract class Mode implements Runnable {
     
 
     
-    public void launch(){
-		
-		if(this.launchable){
-			
-			if(isOverlap() || ! deadArea.updateShadow()){
-				isAlive = false;
-			}
-			number --;
-			restTime+=5000;
-		
-			launchable = false;
-		    timeOfLaunch = System.currentTimeMillis(); 
-		}
-		
-		
-	}
-	
+    abstract public void launch();
+
+   
     public boolean isOverlap(){
 
     	if(second.isOverlap(clockPanel.getHeight()/2)) return true;

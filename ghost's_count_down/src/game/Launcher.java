@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 
 import service.Music;
 import service.Set;
+import service.SoundEffect;
 import ui.ChoicePanel;
 import ui.EnterPanel;
 import ui.Frame;
@@ -34,7 +35,8 @@ public class Launcher implements KeyListener{
 	    int          currentLocation;
 	    Upgrade      upgrade;
 	  
-
+        SoundEffect  soundButton;
+        SoundEffect  soundLaunch;
 	    
 	    public Launcher(){
 	    
@@ -44,6 +46,8 @@ public class Launcher implements KeyListener{
             
             Music mu = new Music("music"+File.separator+"background.wav"); 
             new  Thread(mu).start();
+            soundButton = new SoundEffect("music"+File.separator+"button.wav");
+            soundLaunch = new SoundEffect("music"+File.separator+"launch.wav");
             
 	        EnterPanel ep = new EnterPanel(frame.getWidth(),frame.getHeight());
 	        setCurrentPanel(ep);
@@ -52,6 +56,7 @@ public class Launcher implements KeyListener{
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					// TODO Auto-generated method stub
+					new Thread(soundButton).start();
 					enterChoices();
 				}
         	
@@ -77,6 +82,7 @@ public class Launcher implements KeyListener{
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					// TODO Auto-generated method stub
+					new Thread(soundButton).start();
 					System.exit(0);
 				}
 	        	
@@ -89,6 +95,7 @@ public class Launcher implements KeyListener{
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					// TODO Auto-generated method stub
+					new Thread(soundButton).start();
 					new SetPanel(choicePanel.getWidth()/3,choicePanel.getHeight()/2,setter);
 				    
 				}
@@ -101,7 +108,7 @@ public class Launcher implements KeyListener{
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					// TODO Auto-generated method stub
-					
+					new Thread(soundButton).start();
 					register();
 				}
 	        	
@@ -113,7 +120,8 @@ public class Launcher implements KeyListener{
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					// TODO Auto-generated method stub
-					
+					new Thread(soundButton).start();
+					startDoubleMode();
 				}
 	        	
 	        });
@@ -136,13 +144,17 @@ public class Launcher implements KeyListener{
 			gamePanel = new GamePanel();
 	    	isOnGame = true;
 	    	setCurrentPanel(gamePanel);
-	    	Mode game = new DoubleMode(setter);
-	    	game.clockPanel = game.clockPanel;
+	    	gamePanel.addKeyListener(this);
+	    	gamePanel.grabFocus();
+	    	Mode game = new DoubleMode(setter,this);
+	    	gamePanel.clockPanel = game.clockPanel;
 	    	gamePanel.timePanel = game.timePanel;	
 	    	currentMode = game;
 	    	isSingleMode = false;
-	    	game.go();
+	    	gamePanel.addComponent();   	
+	    	new Thread(game).start();
 	    }
+		
 	    
 		
 		private void register(){
@@ -178,13 +190,14 @@ public class Launcher implements KeyListener{
 		}
 	  
 	
-		private void comeback() {
+		void comeback() {
 			// TODO Auto-generated method stub
 			if(isOnGame){
 				currentMode.isAlive = false;
 				currentMode.isOnGame = false;
 				            isOnGame = false;
 				setCurrentPanel(choicePanel);
+				if(upgrade != null)
 			    this.upgrade.up.frame.dispose();	
 			}
 		}
@@ -213,6 +226,7 @@ public class Launcher implements KeyListener{
 			// TODO Auto-generated method stub
 			if(e.getKeyCode()==Set.shortcutLaunch){
 				if(isOnGame){
+				    
 					currentMode.launch();
 				}
 				else if(currentPanel == choicePanel){
