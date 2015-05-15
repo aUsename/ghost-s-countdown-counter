@@ -24,7 +24,7 @@ public class EnterPanel extends JPanel {
 	
 	public void paint(Graphics g){
           
-		  ImageIcon imgIcon = new ImageIcon("background/enterBackground.png");
+		  ImageIcon imgIcon = new ImageIcon("background/startbackground.png");
 		  Image img = imgIcon.getImage();
 		  g.drawImage(img,0,0,getWidth(),getHeight(),0,0,img.getWidth(null),img.getHeight( null),null);		  
 		  super.paintChildren(g);
