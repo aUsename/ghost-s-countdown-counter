@@ -26,6 +26,7 @@ public class EnterButton extends JButton implements MouseListener{
 		setOpaque(false);
 		filePath = "button/enter0.png";
 		ButtonImage = new ImageIcon(filePath).getImage();
+		this.addMouseListener(this);
 
 	}
 	
@@ -35,7 +36,7 @@ public class EnterButton extends JButton implements MouseListener{
 	
 			filePath = "button/EnterButton.png";
 			ButtonImage = new ImageIcon(filePath).getImage();
-		
+			
 		
 		g.drawImage(ButtonImage,0,0,this.getWidth(),this.getHeight(),this);
 	}

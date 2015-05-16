@@ -17,8 +17,8 @@ public class Clock {
 	public DeadArea deadArea = new DeadArea();
 	Ball   ball ;
 	int    number;
-	Image  image = new ImageIcon("clock"+File.separator+"clock.jpg").getImage();
-	Image  lineofimage = new ImageIcon("line.jpg").getImage();
+	Image  image = new ImageIcon("clock"+File.separator+"Clock.png").getImage();
+	//Image  lineofimage = new ImageIcon("line.jpg").getImage();
 	
 	
 	
