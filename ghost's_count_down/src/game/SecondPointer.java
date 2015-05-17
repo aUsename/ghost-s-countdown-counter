@@ -10,9 +10,9 @@ import javax.swing.ImageIcon;
 public class SecondPointer extends Pointer {
 	
     public SecondPointer(){
-    	super(1);
+    	super(1.5);
     	length = 200;
-    	angle = 270;
+    	angle = 360*Math.random();
  	     width = 5;
     	image = new ImageIcon("clock"+File.separator+"pointer.jpg").getImage();
     }

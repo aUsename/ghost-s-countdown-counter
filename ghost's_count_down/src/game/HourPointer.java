@@ -9,13 +9,20 @@ import java.io.File;
 import javax.swing.ImageIcon;
 
 public class HourPointer extends Pointer {
-   public HourPointer(){
+   
+	
+	public HourPointer(){
 	  
-	   super(3 ); 
-	   angle = 45;
+	   super(2.8); 
+	   angle = 360*Math.random();
 	   length = 120;
 	   width = 10;
+<<<<<<< HEAD
 	   image = new ImageIcon("button"+File.separator+"enter1.png").getImage();
+=======
+	   image = new ImageIcon("clock"+File.separator+"pointer.jpg").getImage();
+  
+>>>>>>> origin/master
    }
    
    public void draw(Graphics2D g){

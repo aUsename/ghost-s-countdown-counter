@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 
 import service.Music;
 import service.Set;
+import service.SoundEffect;
 import ui.ChoicePanel;
 import ui.EnterPanel;
 import ui.Frame;
@@ -31,20 +32,52 @@ public class Launcher implements KeyListener{
 	    GamePanel    gamePanel; 
 	    JPanel       currentPanel = null;
 	    Set          setter       = new Set();
+<<<<<<< HEAD
 	     PlayerInfo   player;
 	    int          currentLocation;
 	     Upgrade      upgrade;
+=======
+	    PlayerInfo   player;
+	    
+	    Upgrade      upgrade;
+>>>>>>> origin/master
 	  
 
+        SoundEffect  soundButton;
+        SoundEffect  soundLaunch;
+        SoundEffect  soundWin;
+        SoundEffect  soundFail;
+        double       currentLocation ;
+
+         /**
+          *location == 0.00 ; enterPanel
+          *location == 1.10 ; choicePanel.singleButton
+          *location == 1.20 ; choicePanel.doubleButton
+          *location == 1.30 ; choicePanel.setButton
+          *location == 1.40 ; choicePanel.exitButton
+          *location == 1.31 ; setPanel
+          *location == 1.11 ; registerPanel
+          *location == 2.10 ; upgradePanel
+          *location == 2.20 ; gamePanel
+          */
 	    
+        
+        
 	    public Launcher(){
 	    
 	    	new SplashWindow().start();
             frame.setVisible(true);
             frame.addKeyListener(this);
-            
             Music mu = new Music("music"+File.separator+"background.wav"); 
+            
+            soundButton = new SoundEffect("music"+File.separator+"button.wav");
+            soundLaunch = new SoundEffect("music"+File.separator+"launch.wav");
+            soundWin    = new SoundEffect("music"+File.separator+"beat.wav");
+            soundFail   = new SoundEffect("music"+File.separator+"fall.wav");
+           
             new  Thread(mu).start();
+            soundButton = new SoundEffect("music"+File.separator+"button.wav");
+            soundLaunch = new SoundEffect("music"+File.separator+"launch.wav");
             
 	        EnterPanel ep = new EnterPanel(frame.getWidth(),frame.getHeight());
 
@@ -98,6 +131,7 @@ public class Launcher implements KeyListener{
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					// TODO Auto-generated method stub
+					new Thread(soundButton).start();
 					enterChoices();
 				}
         	
@@ -120,6 +154,7 @@ public class Launcher implements KeyListener{
 //	        choicePanel.exit.addKeyListener(this);
 	        choicePanel.single.addKeyListener(this);
 	        choicePanel.doub.addKeyListener(this);
+<<<<<<< HEAD
 //	        choicePanel.set.addKeyListener(this);
 //	        
 //	        choicePanel.exit.addActionListener(new ActionListener(){
@@ -144,6 +179,34 @@ public class Launcher implements KeyListener{
 //				}
 //	        	
 //	        });
+=======
+	        choicePanel.set.addKeyListener(this);
+	        
+	        choicePanel.exit.addActionListener(new ActionListener(){
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					// TODO Auto-generated method stub
+					new Thread(soundButton).start();
+					System.exit(0);
+				}
+	        	
+	        });
+    
+	        
+	        choicePanel.set.addActionListener(new ActionListener(){
+
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					// TODO Auto-generated method stub
+					new Thread(soundButton).start();
+					new SetPanel(choicePanel.getWidth()/3,choicePanel.getHeight()/2,setter);
+				    
+				}
+	        	
+	        });
+>>>>>>> origin/master
 
 	        
 	        choicePanel.single.addActionListener(new ActionListener(){
@@ -151,7 +214,7 @@ public class Launcher implements KeyListener{
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					// TODO Auto-generated method stub
-					
+					new Thread(soundButton).start();
 					register();
 				}
 	        	
@@ -163,7 +226,8 @@ public class Launcher implements KeyListener{
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					// TODO Auto-generated method stub
-					
+					new Thread(soundButton).start();
+					startDoubleMode();
 				}
 	        	
 	        });
@@ -186,13 +250,17 @@ public class Launcher implements KeyListener{
 			gamePanel = new GamePanel();
 	    	isOnGame = true;
 	    	setCurrentPanel(gamePanel);
-	    	Mode game = new DoubleMode(setter);
-	    	game.clockPanel = game.clockPanel;
+	    	gamePanel.addKeyListener(this);
+	    	gamePanel.grabFocus();
+	    	Mode game = new DoubleMode(setter,this);
+	    	gamePanel.clockPanel = game.clockPanel;
 	    	gamePanel.timePanel = game.timePanel;	
 	    	currentMode = game;
 	    	isSingleMode = false;
-	    	game.go();
+	    	gamePanel.addComponent();   	
+	    	new Thread(game).start();
 	    }
+		
 	    
 		
 		private  void register(){
@@ -228,13 +296,14 @@ public class Launcher implements KeyListener{
 		}
 	  
 	
-		private void comeback() {
+		void comeback() {
 			// TODO Auto-generated method stub
 			if(isOnGame){
-				currentMode.isAlive = false;
+				currentMode.isTerminated = true;
 				currentMode.isOnGame = false;
 				            isOnGame = false;
 				setCurrentPanel(choicePanel);
+				if(upgrade != null)
 			    this.upgrade.up.frame.dispose();	
 			}
 		}
@@ -263,6 +332,7 @@ public class Launcher implements KeyListener{
 			// TODO Auto-generated method stub
 			if(e.getKeyCode()==Set.shortcutLaunch){
 				if(isOnGame){
+				    
 					currentMode.launch();
 				}
 				else if(currentPanel == choicePanel){

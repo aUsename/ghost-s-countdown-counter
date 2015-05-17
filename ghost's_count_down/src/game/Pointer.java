@@ -14,22 +14,17 @@ public class Pointer {
    
    
    public Pointer(double v){
-	   this();
+	   
 	   circleTime = v;
    }
    
    
    
    
-   public Pointer(){
-  	   angle = 270;
-   }
-   
-   
    
    
    public void rotate(){
-	   angle += (1/circleTime);
+	   angle += (2/circleTime);
 	   angle %= 360 ;
    }
  

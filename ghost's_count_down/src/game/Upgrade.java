@@ -10,9 +10,9 @@ public class Upgrade implements Runnable {
     
 	public Upgrade(Launcher launcher) {
 		// TODO Auto-generated constructor stub
-	    this.w = launcher.frame.getWidth()*3/4;
-	    this.h = launcher.frame.getHeight()*3/4;
-	    this.level = launcher.player.bestGrade;
+	    this.w        = launcher.frame.getWidth()*3/4;
+	    this.h        = launcher.frame.getHeight()*3/4;
+	    this.level    = launcher.player.bestGrade;
 	    this.launcher = launcher;
 	    
 	}
@@ -20,13 +20,13 @@ public class Upgrade implements Runnable {
 	public void run(){
 
 		 up = new UpgradePanel(w,h,level){
-		
+		 
 		public void startSingle(int level){
 		    startSingleMode(level);
 		    up.frame.dispose();
 		  }
 	   };
-	    
+	     up.addKeyListener(launcher);
 	}
 	
 	
@@ -37,7 +37,7 @@ public class Upgrade implements Runnable {
 		    launcher.setCurrentPanel(launcher.gamePanel);    	
 	    	Mode game = new SingleMode(launcher,level);    	
 	    	launcher.gamePanel.clockPanel = game.clockPanel;
-	    	launcher.gamePanel.timePanel = game.timePanel;
+	    	launcher.gamePanel.timePanel  = game.timePanel;
 	    	launcher.gamePanel.addComponent();   	
 	    	launcher.currentMode = game;
 	    	launcher.isSingleMode = true;

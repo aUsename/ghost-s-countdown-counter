@@ -11,6 +11,10 @@ public class DeadArea {
 	Double angle = 0.0;
 	
 	
+	public void trim(){
+		angle = 2*angle/3;
+	}
+	
 	public void drawShadow(Graphics gp){
 		
 		if(start!=null){
