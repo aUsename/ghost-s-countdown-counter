@@ -15,7 +15,7 @@ public class HourPointer extends Pointer {
 	   angle = 45;
 	   length = 120;
 	   width = 10;
-	   image = new ImageIcon("clock"+File.separator+"pointer.jpg").getImage();
+	   image = new ImageIcon("button"+File.separator+"enter1.png").getImage();
    }
    
    public void draw(Graphics2D g){

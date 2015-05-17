@@ -21,7 +21,7 @@ public class GamePanel extends JPanel{
     	add(timePanel);
     	
     	timePanel.setBounds(0,0,getWidth(),getHeight()/6);
-    	clockPanel.setBounds(getWidth()/8,getHeight()/8,getWidth()*6/8,getHeight()*7/8);
+    	clockPanel.setBounds(220,25,650,650);
     	clockPanel.pointers.setBounds(0,0,clockPanel.getWidth(),clockPanel.getHeight());
     	repaint();
     	

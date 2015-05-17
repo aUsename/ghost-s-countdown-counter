@@ -17,6 +17,7 @@ import ui.GamePanel;
 import ui.RegisterPanel;
 import ui.SetPanel;
 import ui.SplashWindow;
+import ui.TransparentPanel;
 
 
 public class Launcher implements KeyListener{
@@ -30,9 +31,9 @@ public class Launcher implements KeyListener{
 	    GamePanel    gamePanel; 
 	    JPanel       currentPanel = null;
 	    Set          setter       = new Set();
-	    PlayerInfo   player;
+	     PlayerInfo   player;
 	    int          currentLocation;
-	    Upgrade      upgrade;
+	     Upgrade      upgrade;
 	  
 
 	    
@@ -46,7 +47,52 @@ public class Launcher implements KeyListener{
             new  Thread(mu).start();
             
 	        EnterPanel ep = new EnterPanel(frame.getWidth(),frame.getHeight());
+
 	        setCurrentPanel(ep);
+
+	        
+	   /* ep.eb.addMouseListener(new MouseListener(){
+	        	@Override
+	        	public void mouseClicked(MouseEvent e) {
+	        		// TODO Auto-generated method stub
+                    enterChoices();    System.out.print("fd");  		
+	        	}
+
+	        	@Override
+	        	public void mousePressed(MouseEvent e) {
+	        		// TODO Auto-generated method stub
+	        		ep.eb.isPressed = true;
+	        		ep.eb.repaint();
+	        	}
+
+	        	@Override
+	        	public void mouseReleased(MouseEvent e) {
+	        		// TODO Auto-generated method stub
+	        		ep.eb.isPressed = false;
+	        		ep.eb.repaint();
+	        		
+	        	}
+
+	        	@Override
+	        	public void mouseEntered(MouseEvent e) {
+	        		// TODO Auto-generated method stub
+	        		ep.eb.isIn  = true;
+	        		ep.eb.repaint();
+	        		
+	        	}
+
+	
+	        	@Override
+	        	public void mouseExited(MouseEvent e) {
+	        		// TODO Auto-generated method stub
+	        		ep.eb.isIn = false;
+	        		ep.eb.repaint();
+	        	}
+	        });
+	          */
+	        
+	        
+
 	        ep.eb.addActionListener(new ActionListener(){
 
 				@Override
@@ -63,37 +109,41 @@ public class Launcher implements KeyListener{
 	    
 	    private void enterChoices() {
 					// TODO Auto-generated method stub
-			choicePanel = new ChoicePanel(frame.getContentPane().getWidth(), frame.getContentPane().getHeight());		
-	        setCurrentPanel(choicePanel);
+			choicePanel = new ChoicePanel(frame.getContentPane().getWidth(), frame.getContentPane().getHeight());	
+//			TransparentPanel tp = new TransparentPanel();
+			
+			setCurrentPanel(choicePanel);
+//	        setCurrentPanel(tp);
+	        choicePanel.start();
 	        choicePanel.grabFocus();
 	        choicePanel.addKeyListener(this);
-	        choicePanel.exit.addKeyListener(this);
+//	        choicePanel.exit.addKeyListener(this);
 	        choicePanel.single.addKeyListener(this);
 	        choicePanel.doub.addKeyListener(this);
-	        choicePanel.set.addKeyListener(this);
-	        
-	        choicePanel.exit.addActionListener(new ActionListener(){
-
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					// TODO Auto-generated method stub
-					System.exit(0);
-				}
-	        	
-	        });
-    
-	        
-	        choicePanel.set.addActionListener(new ActionListener(){
-
-
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					// TODO Auto-generated method stub
-					new SetPanel(choicePanel.getWidth()/3,choicePanel.getHeight()/2,setter);
-				    
-				}
-	        	
-	        });
+//	        choicePanel.set.addKeyListener(this);
+//	        
+//	        choicePanel.exit.addActionListener(new ActionListener(){
+//
+//				@Override
+//				public void actionPerformed(ActionEvent e) {
+//					// TODO Auto-generated method stub
+//					System.exit(0);
+//				}
+//	        	
+//	        });
+//    
+//	        
+//	        choicePanel.set.addActionListener(new ActionListener(){
+//
+//
+//				@Override
+//				public void actionPerformed(ActionEvent e) {
+//					// TODO Auto-generated method stub
+//					new SetPanel(choicePanel.getWidth()/3,choicePanel.getHeight()/2,setter);
+//				    
+//				}
+//	        	
+//	        });
 
 	        
 	        choicePanel.single.addActionListener(new ActionListener(){
@@ -119,7 +169,7 @@ public class Launcher implements KeyListener{
 	        });
 	    }
 
-	    void upgrade(){
+	   void upgrade(){
 	    	if(upgrade!=null){
 	    		upgrade.up.frame.dispose();
 	    	}
@@ -145,7 +195,7 @@ public class Launcher implements KeyListener{
 	    }
 	    
 		
-		private void register(){
+		private  void register(){
 			RegisterPanel registerPanel = new RegisterPanel();
 			registerPanel.registerButton.addActionListener(new ActionListener(){
 
