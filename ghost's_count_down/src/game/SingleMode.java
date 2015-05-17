@@ -60,7 +60,7 @@ public class SingleMode extends Mode{
     			    	isAlive = true;
     			        break;
     			    }
-    			    if (!isAlive ){
+    			    if (!isAlive || isTerminated ){
     			    	break;
     			    }
     			    if(deadArea.start!=null){
@@ -80,15 +80,16 @@ public class SingleMode extends Mode{
 		// TODO Auto-generated method stub
 		go();
 		
-		if(isAlive){
+		if(isAlive && !isTerminated){
 			//do  update the bestGrade 
 			if(currentLevel==player.bestGrade){
 				player.bestGrade++;
 				player.storage();
+			    
 			}
-		      
-		}else{
-			
+		      new Thread(launcher.soundWin).start();
+		}else if(!isAlive){
+			new Thread(launcher.soundFail).start();
 		}
 		if(launcher.currentMode.isOnGame){
 			launcher.upgrade();
@@ -99,6 +100,7 @@ public class SingleMode extends Mode{
     public void launch(){
 		
 		if(this.launchable){
+			new Thread(launcher.soundLaunch).start();;
 			
 			if(isOverlap() || ! deadArea.updateShadow())				isAlive = false;
 			number --;

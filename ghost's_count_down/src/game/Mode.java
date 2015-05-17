@@ -9,7 +9,7 @@ import ui.TimePanel;
 
 public abstract class Mode implements Runnable {
 	
-	public double restTime; 
+	public static double restTime; 
 	boolean isOnGame = true;
     static boolean isPause  = false;
     boolean isAlive  = true;
@@ -26,9 +26,10 @@ public abstract class Mode implements Runnable {
        
      
     Ball ball  ;
-    int  number;
+    public int  number;
     Clock clock  ;
     Set setter;
+	public boolean isTerminated = false;
     
     
     
@@ -45,7 +46,6 @@ public abstract class Mode implements Runnable {
     	timePanel = new TimePanel();
     	number = 10; 
     	
-      
     }
     
     

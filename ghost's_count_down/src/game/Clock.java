@@ -24,6 +24,7 @@ public class Clock {
 	
 	
 	public Clock(Ball b,int n){
+		
 		ball =b;
 		number = n;
 		
@@ -36,7 +37,6 @@ public class Clock {
 		Graphics2D g = (Graphics2D) gp; 
 	    g.drawImage(image, 0, 0, g.getClipBounds().width, g.getClipBounds().height,
 	    		    0, 0, image.getWidth(null), image.getHeight(null), null);
-	   	
 	}
 
 

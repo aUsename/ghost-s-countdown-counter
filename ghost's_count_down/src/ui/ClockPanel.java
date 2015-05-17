@@ -19,6 +19,7 @@ public class ClockPanel extends JPanel {
 		// TODO Auto-generated constructor stub
 		
 		setLayout(null);
+		setOpaque(false);
 		clock = c ;
 		pointers = new PointerPanel(c);
 		add(pointers);

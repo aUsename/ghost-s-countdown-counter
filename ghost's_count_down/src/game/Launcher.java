@@ -32,19 +32,42 @@ public class Launcher implements KeyListener{
 	    JPanel       currentPanel = null;
 	    Set          setter       = new Set();
 	    PlayerInfo   player;
-	    int          currentLocation;
+	    
 	    Upgrade      upgrade;
 	  
+
         SoundEffect  soundButton;
         SoundEffect  soundLaunch;
+        SoundEffect  soundWin;
+        SoundEffect  soundFail;
+        double       currentLocation ;
+
+         /**
+          *location == 0.00 ; enterPanel
+          *location == 1.10 ; choicePanel.singleButton
+          *location == 1.20 ; choicePanel.doubleButton
+          *location == 1.30 ; choicePanel.setButton
+          *location == 1.40 ; choicePanel.exitButton
+          *location == 1.31 ; setPanel
+          *location == 1.11 ; registerPanel
+          *location == 2.10 ; upgradePanel
+          *location == 2.20 ; gamePanel
+          */
 	    
+        
+        
 	    public Launcher(){
 	    
 	    	new SplashWindow().start();
             frame.setVisible(true);
             frame.addKeyListener(this);
-            
             Music mu = new Music("music"+File.separator+"background.wav"); 
+            
+            soundButton = new SoundEffect("music"+File.separator+"button.wav");
+            soundLaunch = new SoundEffect("music"+File.separator+"launch.wav");
+            soundWin    = new SoundEffect("music"+File.separator+"beat.wav");
+            soundFail   = new SoundEffect("music"+File.separator+"fall.wav");
+           
             new  Thread(mu).start();
             soundButton = new SoundEffect("music"+File.separator+"button.wav");
             soundLaunch = new SoundEffect("music"+File.separator+"launch.wav");
@@ -193,7 +216,7 @@ public class Launcher implements KeyListener{
 		void comeback() {
 			// TODO Auto-generated method stub
 			if(isOnGame){
-				currentMode.isAlive = false;
+				currentMode.isTerminated = true;
 				currentMode.isOnGame = false;
 				            isOnGame = false;
 				setCurrentPanel(choicePanel);
