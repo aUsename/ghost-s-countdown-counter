@@ -31,7 +31,7 @@ public class GamePanel extends JPanel{
   	public ImageIcon iconMusicOff= new ImageIcon("button"+File.separator+"bgmOff.png");
   	public ImageIcon iconSoundOn = new ImageIcon("button"+File.separator+"soundSpecialOn.png");
   	public ImageIcon iconSoundOff= new ImageIcon("button"+File.separator+"soundSpecialOff.png");
-  	public ImageIcon iconBack    = new ImageIcon("button"+File.separator+"return.png");
+  	public ImageIcon iconBack    = new ImageIcon("button"+File.separator+"back.png");
   	
   	
   	
