@@ -6,6 +6,11 @@ import javax.swing.JPanel;
 
 public class HistoryInfo extends JPanel {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 277582836443724197L;
+
 	public HistoryInfo() {
 		// TODO Auto-generated constructor stub
 	}

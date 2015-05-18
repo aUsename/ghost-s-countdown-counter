@@ -3,7 +3,12 @@ package ui;
 import javax.swing.JButton;
 
 public class ReturnButton extends JButton {
-  public  ReturnButton(){
+  /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1694454627536263701L;
+
+public  ReturnButton(){
 	  
   }
 }

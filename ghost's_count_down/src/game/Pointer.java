@@ -36,13 +36,14 @@ public class Pointer {
     * @param r is the radius of clock
     * @return
    */
-   public boolean isOverlap(double r){
+   public boolean isOverlap(double r,  double launchAngle){
 	   
 	   double spanOfAngle =  4*180*Math.atan(width/r/2);
 	 
+	   
 	   //System.out.println(spanOfAngle);
 	   //System.out.println(angle);
-	   if( angle - spanOfAngle < 90 && angle + spanOfAngle > 90){
+	   if( (angle - spanOfAngle) < launchAngle &&  (angle + spanOfAngle)%360 > launchAngle ){
 		   return true;
 	   }
 	   

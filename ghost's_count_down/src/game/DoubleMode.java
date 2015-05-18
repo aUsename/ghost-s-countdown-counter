@@ -2,20 +2,22 @@
 package game;
 
 import service.Set;
-import ui.ClockPanel;
 
 
 public class DoubleMode extends Mode{
 	
-	boolean turnToFormer = true;
-	boolean FormerWin    = false;
-	boolean LaterWin     = false;
+	public static boolean toDraw;
+	boolean turnToLeft = true;
+	public static boolean FormerWin    = false;
+	public static boolean LaterWin     = false;
 	
 	public DoubleMode(Set s,Launcher l){
 		super(s);
-		restTime = -1; 
 		launcher = l;
-		// TODO Auto-generated constructor stub
+		FormerWin    = false;
+		LaterWin     = false;
+		toDraw = false;
+		isPause = false;
 	}
 
 	public void go() {
@@ -39,7 +41,7 @@ public class DoubleMode extends Mode{
 			    	deadArea.start+=0.5;	
 			    }
 			    
-			    if(this.FormerWin || this.LaterWin){
+			    if(DoubleMode.FormerWin || DoubleMode.LaterWin){
 			    	break;
 			    }
 			}
@@ -48,24 +50,54 @@ public class DoubleMode extends Mode{
 		}
 	}
 
+	
  	@Override
    	public void run() {
 		// TODO Auto-generated method stub
 		go();
+		toDraw = true;
+		clockPanel.pointers.repaint();
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		toDraw = false;
+		clockPanel.pointers.repaint();
 		launcher.comeback();
 	}
 
+ 	@Override
 	public void launch(){
 	    
-		if(isOverlap() || ! deadArea.updateShadow())	{
-		    if(this.turnToFormer){
-		    	this.FormerWin = true ;
+ 		if(!isPause){
+ 			new Thread(launcher.soundLaunch).start();
+ 			if(  isOverlap() || ! deadArea.updateShadowDouble(this.turnToLeft) )	{
+		    if(this.turnToLeft){
+		    	DoubleMode.LaterWin = true ;
 		    }else{
-		    	this.LaterWin  = true ;
+		    	DoubleMode.FormerWin  = true ;
 		    }
 		}
 		number --;
-		this.turnToFormer = ! this.turnToFormer;
+		this.turnToLeft = ! this.turnToLeft;
+ 		}
+		
 	}
 
+	@Override
+	public boolean isOverlap(){
+		if(this.turnToLeft) {
+			if(second.isOverlap(clockPanel.getHeight()/2,180)) return true;
+			if(minute.isOverlap(clockPanel.getHeight()/2,180)) return true;
+			if(hour.  isOverlap(clockPanel.getHeight()/2,180)) return true;
+		}else{
+			if(second.isOverlap(clockPanel.getHeight()/2,0)) return true;
+			if(minute.isOverlap(clockPanel.getHeight()/2,0)) return true;
+			if(hour.  isOverlap(clockPanel.getHeight()/2,0)) return true;
+		}
+		return false;
+	}
 }

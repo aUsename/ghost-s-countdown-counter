@@ -8,6 +8,10 @@ import javax.swing.*;
 
 
 public class RegisterSuccessPanel extends JPanel {
+		/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1274966244736545083L;
 		public JButton confirm;
 		Image BackgroundLogin;
 		

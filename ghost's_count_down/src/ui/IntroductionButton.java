@@ -1,63 +1,43 @@
 package ui;
 
-import java.awt.Graphics;
+import java.awt.Color;
 import java.awt.Image;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.io.File;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 //import javax.swing.JPanel;
 
-public class IntroductionButton extends JButton implements MouseListener {
-	String button0 = "button"+File.separator+"introductionButton0.png";
-    String button1 = "button"+File.separator+"introductionButton1.png";
-    Image buttonImage = null;
-    boolean isIn = false;
-   
-	public IntroductionButton() {
+public class IntroductionButton extends JButton {
+	    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 4618595990063205874L;
+		String sorce = "button"+File.separator+"IntroductionButton0.png";
+	    ImageIcon icon= new ImageIcon(sorce);
+	    Image image =icon.getImage();
+	    /**
+	     * 
+	     * @param a is the width of button
+	     * @param b is the height of button
+		 */
+	    
+		public IntroductionButton(int a,int b) {
+		    setBorder(null);
+		    setBackground(Color.white);
+			setOpaque(false);
+		    icon.getImage();
+		    setBorder(null
+		    		);
+		    // no changes to picture's content,enlarge or smaller 
+			Image image1 = image.getScaledInstance(a, b,  Image.SCALE_DEFAULT);
+			Image image2 = image.getScaledInstance(a-5, b-5,  Image.SCALE_DEFAULT);
+			
 		
-		setBorder(null);
-		setOpaque(false);
-		buttonImage = new ImageIcon(button0).getImage();
-	}
-	
-	public void paintComponent(Graphics g){
-		if(isIn)
-			buttonImage = new ImageIcon(button1).getImage();
-		else
-			buttonImage = new ImageIcon(button0).getImage();
-		g.drawImage(buttonImage,0,0,this.getWidth(),this.getHeight(),this);
-//	   
-		// TODO Auto-generated constructor stub
-	}
-	@Override
-	public void mouseClicked(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-	@Override
-	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-	@Override
-	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-	@Override
-	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
-		isIn = true;
-		repaint();
-	}
-	@Override
-	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
-		isIn = false;
-		repaint();
-	}
-
+			setIcon(new ImageIcon(image1));
+			setRolloverIcon(new ImageIcon(image2));
+			
+			setSize(a,b);
+			// TODO Auto-generated constructor stub
+		}
 }

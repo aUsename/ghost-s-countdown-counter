@@ -1,8 +1,6 @@
 package ui;
 
 import java.awt.Color;
-import java.awt.Component;
-import java.awt.Graphics;
 import java.awt.Image;
 import java.io.File;
 
@@ -12,6 +10,11 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public class ExitButton extends JButton{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8991461260206825889L;
+
 	// 
     String sorce = "button"+File.separator+"exit.png";
     

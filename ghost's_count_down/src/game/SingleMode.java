@@ -5,7 +5,7 @@ public class SingleMode extends Mode{
 	
     PlayerInfo player;
     int currentLevel;
-   
+    public static double restTime; 
     
     // if limit the time between two launch
     boolean launchable = true;
@@ -15,7 +15,9 @@ public class SingleMode extends Mode{
     // if trip launch in 2s,delete a part of the dead area as a prize
     long    firstTimeLatest  = -1;
     long    secondTimeLatest = -1;
-    long    inteval = 1200;
+    long    inteval = 1500;
+    
+    public static boolean toDraw;
     
     
 	public SingleMode(Launcher launch,int level) {
@@ -26,7 +28,9 @@ public class SingleMode extends Mode{
 		launcher = launch;
 		currentLevel = level;
 		timeOfPause = 500;
-		this.number = ((int)(level/3)) + 6;
+		this.number = ((int)(level)) + 6;
+		toDraw = false;
+		isPause = false;
 	}
 
 	public void go() {
@@ -45,7 +49,7 @@ public class SingleMode extends Mode{
     				}
     				
     			    try {
-						Thread.sleep(15 - currentLevel);
+						Thread.sleep( 15 - (Integer)(currentLevel/2+5) );
 					} catch (InterruptedException e) {
 
 						e.printStackTrace();
@@ -53,7 +57,7 @@ public class SingleMode extends Mode{
     			    long b = System.currentTimeMillis();
     			    restTime -= (b-a);
     			   
-    			    if(restTime<= 0){	
+    			    if(restTime< 0){	
     			    	isAlive = false;
     			    }
     			    if(number==0){
@@ -81,16 +85,40 @@ public class SingleMode extends Mode{
 		go();
 		
 		if(isAlive && !isTerminated){
-			//do  update the bestGrade 
+			if(currentLevel==10) new Thread(launcher.soundWin ).start();
+			else                 new Thread(launcher.soundBeat).start();
+			
+			toDraw = true;
+			clockPanel.pointers.repaint();
+			try {
+				Thread.sleep(2000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		
+			toDraw = false;
+			clockPanel.pointers.repaint();
+			
 			if(currentLevel==player.bestGrade){
 				player.bestGrade++;
 				player.storage();
 			    
 			}
-		      new Thread(launcher.soundWin).start();
-		}else if(!isAlive){
+		     
+		}else if(!isAlive){	
 			new Thread(launcher.soundFail).start();
+			toDraw = true;
+			clockPanel.pointers.repaint();
+			try {
+				Thread.sleep(2000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		
+			toDraw = false;
+			clockPanel.pointers.repaint();
 		}
+
 		if(launcher.currentMode.isOnGame){
 			launcher.upgrade();
 		}
@@ -99,12 +127,12 @@ public class SingleMode extends Mode{
 	
     public void launch(){
 		
-		if(this.launchable){
+		if(this.launchable  && !isPause){
 			new Thread(launcher.soundLaunch).start();;
 			
 			if(isOverlap() || ! deadArea.updateShadow())				isAlive = false;
 			number --;
-			restTime += number*500 ;
+			restTime +=( currentLevel+6+number)* 500 ;
 			
 			launchable = false;
 		    timeOfLaunch = System.currentTimeMillis();

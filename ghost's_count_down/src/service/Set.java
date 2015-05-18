@@ -13,7 +13,7 @@ public class Set {
 	
 	
 	//music in background
-    public static boolean isMusicOn = false;
+    public static boolean isMusicOn = true;
     public void setMusic(boolean b){
     	isMusicOn = b;
     }

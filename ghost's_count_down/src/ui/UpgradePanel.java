@@ -6,11 +6,14 @@ import java.awt.event.MouseListener;
 import java.io.File;
 
 import javax.swing.*;
-import javax.swing.event.MouseInputListener;
 
 
 public class UpgradePanel extends JPanel{  
 	  
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2543160610570117754L;
 	public JFrame     frame;  
 	ImageIcon  icon;
 	Image      image;
@@ -104,7 +107,11 @@ public class UpgradePanel extends JPanel{
     
     
     class CheckPoint extends JPanel implements MouseListener{
-    	double x;
+    	/**
+		 * 
+		 */
+		private static final long serialVersionUID = 5583484451823048489L;
+		double x;
     	double y;
     	double r;
     	int level;
@@ -159,9 +166,4 @@ public class UpgradePanel extends JPanel{
     		
     }
     
-	public static void main(String[] args){
-		
-		UpgradePanel pan = new UpgradePanel(500,400,5);
-	}
-	
 }

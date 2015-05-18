@@ -7,11 +7,16 @@ import javax.swing.*;
 
 
 public class Background extends JPanel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2074262506906558190L;
 	Image image;
 	
 	public Background(String s,int w,int h) {
 		// TODO Auto-generated constructor stub
 		setLayout(null);
+		setOpaque(false);
 		image = new ImageIcon(s).getImage();
 		setSize(w,h);
 	}

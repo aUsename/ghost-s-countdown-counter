@@ -3,9 +3,6 @@ package ui;
 import java.awt.Color;
 import java.awt.Image;
 import java.io.File;
-
-import javax.swing.Action;
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -13,7 +10,12 @@ import javax.swing.JPanel;
 
 public class SetButton extends JButton {
 
-    String sorce = "button"+File.separator+"set.png";
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -749014324455300879L;
+
+	String sorce = "button"+File.separator+"set.png";
     
     //
     ImageIcon icon= new ImageIcon(sorce);

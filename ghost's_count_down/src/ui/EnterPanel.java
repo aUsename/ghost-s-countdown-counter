@@ -4,11 +4,14 @@ import java.awt.Graphics;
 import java.awt.Image;
 
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JPanel;
 
 public class EnterPanel extends JPanel {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8298237266290746246L;
 	public EnterButton eb;
 	
 	public EnterPanel(int w,int h){

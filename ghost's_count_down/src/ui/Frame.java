@@ -1,19 +1,19 @@
 package ui;
 
 
-import java.awt.Dimension;
 
 import java.awt.Toolkit;
 
-import javax.swing.ImageIcon;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
 
 
 
 public class Frame extends JFrame  {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8072890774921440992L;
 	public static int width=1100;
 	public static int height=700;
 	

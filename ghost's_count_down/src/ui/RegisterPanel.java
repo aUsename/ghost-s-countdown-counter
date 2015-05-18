@@ -5,7 +5,11 @@ import java.io.*;
 import javax.swing.*;
 
 public class RegisterPanel extends JPanel{
-/*
+/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4526463358476555947L;
+	/*
  * 判断玩家是否存在，
  * 存在进去UpgradePanel;
  * 不存在进去RegisterSuccessPanel,再UpgradePanel
@@ -14,7 +18,7 @@ public class RegisterPanel extends JPanel{
 	JPanel textPanel;		
 	JLabel idLabel;
 	Background imagePanel;
-	JTextField idField;
+	public JTextField idField;
 	public JFrame  frame;
 	public String getText(){
 		return idField.getText();

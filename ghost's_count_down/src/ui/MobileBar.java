@@ -11,6 +11,10 @@ import javax.swing.event.MouseInputListener;
 
 public class MobileBar extends JPanel implements MouseInputListener{
     
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 428847145584787265L;
 	int  location=0;
 	int  size;
 	public MobileBar(int w,int h) {

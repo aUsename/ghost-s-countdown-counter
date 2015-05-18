@@ -1,7 +1,5 @@
 package game;
 
-import java.awt.AlphaComposite;
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
@@ -18,8 +16,6 @@ public class Clock {
 	Ball   ball ;
 	int    number;
 	Image  image = new ImageIcon("clock"+File.separator+"Clock.png").getImage();
-	//Image  lineofimage = new ImageIcon("line.jpg").getImage();
-	
 	
 	
 	

@@ -2,12 +2,12 @@ package ui;
 
 import game.Clock;
 import game.DeadArea;
+import game.DoubleMode;
 import game.HourPointer;
+import game.Launcher;
 import game.MinutePointer;
 import game.SecondPointer;
 import game.SingleMode;
-
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.io.File;
@@ -27,8 +27,8 @@ public class PointerPanel extends JPanel {
 	DeadArea      deadArea ;
 	
 	ImageIcon[]     icon ;
-	
-	
+	ImageIcon win ;
+	ImageIcon fail ;
 	
 	public PointerPanel(Clock c){
 		
@@ -50,6 +50,9 @@ public class PointerPanel extends JPanel {
 		icon[2] = icon3 ; 
 		icon[3] = icon4 ; 
 		icon[4] = icon5 ; 
+		
+		win = new ImageIcon("clock"+File.separator+"win.png");
+		fail= new ImageIcon("clock"+File.separator+"fail.png");
 	}
 	
 	public void paintComponent(Graphics gp){
@@ -60,7 +63,7 @@ public class PointerPanel extends JPanel {
 		minute.draw( g);
 		second.draw(g);
 		
-		if(SingleMode.restTime < 5000  && SingleMode.restTime > 500){
+		if(SingleMode.restTime < 5000  && SingleMode.restTime > 500  && Launcher.isSingleMode) {
 			int i = (int) SingleMode.restTime/1000;
 			g.translate(g.getClipBounds().getWidth()/2, g.getClipBounds().getHeight()/2);
 		    g.drawImage(icon[i].getImage(), -100, -100, 100, 100, 
@@ -68,6 +71,31 @@ public class PointerPanel extends JPanel {
 		    g.translate(-g.getClipBounds().getWidth()/2, -g.getClipBounds().getHeight()/2);
 		}
 		
+		if(SingleMode.toDraw){
+			if(SingleMode.isAlive){
+				g.translate(g.getClipBounds().getWidth()/2, g.getClipBounds().getHeight()/2);
+				g.drawImage( win.getImage(), -280, -280, 280, 280, 
+				        0,0, win.getIconWidth(), win.getIconHeight(), null);
+				g.translate(-g.getClipBounds().getWidth()/2, -g.getClipBounds().getHeight()/2);
+			}
+			else {
+				g.translate(g.getClipBounds().getWidth()/2, g.getClipBounds().getHeight()/2);
+				g.drawImage( fail.getImage(), -280, -280, 280, 280, 
+				        0,0, fail.getIconWidth(), fail.getIconHeight(), null);
+				g.translate(-g.getClipBounds().getWidth()/2, -g.getClipBounds().getHeight()/2);
+			}
+		}
+		
+		if(DoubleMode.toDraw){
+			if(DoubleMode.FormerWin){			
+				g.drawImage( win.getImage(), 0, 0, 220, 500, 
+				        0,0, win.getIconWidth(), win.getIconHeight(), null);
+			}
+			else if(DoubleMode.LaterWin){		
+				g.drawImage( win.getImage(), 280, 0,500, 500, 
+				        0,0, win.getIconWidth(), win.getIconHeight(), null);			
+			}
+		}
 	}
 	
 }

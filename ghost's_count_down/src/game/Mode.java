@@ -5,20 +5,18 @@ package game;
 import service.Set;
 import ui.ClockPanel;
 import ui.Frame;
-import ui.TimePanel;
 
 public abstract class Mode implements Runnable {
 	
-	public static double restTime; 
+	
 	boolean isOnGame = true;
     static boolean isPause  = false;
-    boolean isAlive  = true;
+    public static boolean isAlive  = true;
     Launcher launcher;
  
     
     
     ClockPanel      clockPanel;
-    TimePanel       timePanel;
     MinutePointer   minute ;
     SecondPointer   second ;
     HourPointer     hour;
@@ -43,9 +41,9 @@ public abstract class Mode implements Runnable {
     	second = clock.second;
     	hour = clock.hour;
         deadArea = clock.deadArea;
-    	timePanel = new TimePanel();
     	number = 10; 
-    	
+    	isAlive  = true;
+        
     }
     
     
@@ -58,9 +56,9 @@ public abstract class Mode implements Runnable {
    
     public boolean isOverlap(){
 
-    	if(second.isOverlap(clockPanel.getHeight()/2)) return true;
-		if(minute.isOverlap(clockPanel.getHeight()/2)) return true;
-		if(hour.  isOverlap(clockPanel.getHeight()/2)) return true;
+    	if(second.isOverlap(clockPanel.getHeight()/2,90)) return true;
+		if(minute.isOverlap(clockPanel.getHeight()/2,90)) return true;
+		if(hour.  isOverlap(clockPanel.getHeight()/2,90)) return true;
     	return false;
     }
     

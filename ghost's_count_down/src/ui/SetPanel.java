@@ -1,7 +1,6 @@
 package ui;
 
 import java.awt.Color;
-import java.awt.Font;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
@@ -187,7 +186,11 @@ public class SetPanel extends JFrame {
  	}
  	
  	class SoundPanel extends JPanel{
- 		MobileBar soundBar;
+ 		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+		MobileBar soundBar;
  		MobileBar musicBar;	
  		
  		ButtonGroup musicGroup;
@@ -268,7 +271,11 @@ public class SetPanel extends JFrame {
  	
  	
  	class ShortcutPanel extends JPanel{
- 	     JLabel upLabel;
+ 	     /**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+		JLabel upLabel;
  	     JLabel downLabel;
  	     JLabel backLabel;
  	     JLabel pauseLabel;
@@ -284,8 +291,6 @@ public class SetPanel extends JFrame {
  	    	 setSize(w,h);
  	    	 setLayout(null);
  	    	 setOpaque(false);
- 	    	 
- 	    	 Font font = new Font(null,Font.BOLD,40);
  	    	 
  	    	 upLabel = new JLabel("“Ù¡ø‘ˆ");
  	    	 downLabel = new JLabel("“Ù¡øºı");
@@ -333,6 +338,10 @@ public class SetPanel extends JFrame {
  	
  	class Button extends JButton{
 		
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
 		String sorce;
 	    ImageIcon icon;
 	    Image image ;

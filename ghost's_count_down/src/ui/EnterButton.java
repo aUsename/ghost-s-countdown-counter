@@ -13,6 +13,10 @@ import javax.swing.JButton;
 public class EnterButton extends JButton implements MouseListener{
 	
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4208446659491439164L;
 	Image   ButtonImage = null;
 	String  filePath = null;
 

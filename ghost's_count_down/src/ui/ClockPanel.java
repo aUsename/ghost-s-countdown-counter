@@ -16,7 +16,6 @@ public class ClockPanel extends JPanel {
 
 	
 	public ClockPanel(Clock c) {
-		// TODO Auto-generated constructor stub
 		
 		setLayout(null);
 		setOpaque(false);
