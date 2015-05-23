@@ -23,21 +23,20 @@ public class IntroductionButton extends JButton {
 		 */
 	    
 		public IntroductionButton(int a,int b) {
-		    setBorder(null);
-		    setBackground(Color.white);
+		    
+		   
 			setOpaque(false);
 		    icon.getImage();
-		    setBorder(null
-		    		);
+		    setBorder(null);
 		    // no changes to picture's content,enlarge or smaller 
 			Image image1 = image.getScaledInstance(a, b,  Image.SCALE_DEFAULT);
 			Image image2 = image.getScaledInstance(a-5, b-5,  Image.SCALE_DEFAULT);
-			
-		
+			setSize(a,b);
+	 	    setBackground(Color.white);
 			setIcon(new ImageIcon(image1));
 			setRolloverIcon(new ImageIcon(image2));
 			
-			setSize(a,b);
+			
 			// TODO Auto-generated constructor stub
 		}
 }

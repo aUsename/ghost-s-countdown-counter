@@ -36,7 +36,6 @@ public class SetPanel extends JFrame {
 	SetPanel setPanel = this;
 	
  	public SetPanel(int w,int h,Set set){
-		// TODO Auto-generated constructor stub
  		setter = set;
  		this.setUndecorated(true);
  		this.setAlwaysOnTop(true);

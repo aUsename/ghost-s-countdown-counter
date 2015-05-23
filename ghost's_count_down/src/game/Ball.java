@@ -3,8 +3,6 @@ package game;
 import java.awt.Graphics;
 import java.awt.Image;
 
-import javax.swing.ImageIcon;
-
 public class Ball {
     double x;
     double y;
@@ -15,7 +13,6 @@ public class Ball {
     	x  =xc;
     	y = yc;
     	r = rc;
-    	image = new ImageIcon("ball.jpg").getImage();
     }
     
     public void draw(Graphics g){

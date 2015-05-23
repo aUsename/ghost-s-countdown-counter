@@ -109,7 +109,12 @@ public class Upgrade implements Runnable {
 	    	});
 	    	launcher.currentMode = game;
 	    	Launcher.isSingleMode = true;
-	    	new Thread(game).start();
+	    	if(launcher.isOnGame){
+	    		new Thread(game).start();
+	    	}else {
+	    		up.frame.dispose();
+	    	}
+	    	
 	    	//game.go();
 	    }
 	

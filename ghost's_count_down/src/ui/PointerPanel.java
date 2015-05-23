@@ -29,6 +29,8 @@ public class PointerPanel extends JPanel {
 	ImageIcon[]     icon ;
 	ImageIcon win ;
 	ImageIcon fail ;
+	ImageIcon white;
+	
 	
 	public PointerPanel(Clock c){
 		
@@ -53,6 +55,7 @@ public class PointerPanel extends JPanel {
 		
 		win = new ImageIcon("clock"+File.separator+"win.png");
 		fail= new ImageIcon("clock"+File.separator+"fail.png");
+		white = new ImageIcon("clock"+File.separator+"white.png");
 	}
 	
 	public void paintComponent(Graphics gp){
@@ -62,6 +65,15 @@ public class PointerPanel extends JPanel {
 		hour.  draw(g);
 		minute.draw( g);
 		second.draw(g);
+		
+		/*if(Launcher.isOnGame && !Launcher.isSingleMode){
+			if(!DoubleMode.turnToLeft){
+				g.translate(g.getClipBounds().getWidth(),g.getClipBounds().getHeight());
+			    g.drawImage(white.getImage(), 0, 0, 20,20,0,0,white.getIconWidth(),white.getIconWidth(),null);
+			    g.translate(g.getClipBounds().getWidth(),g.getClipBounds().getHeight());
+			}
+			
+		}*/
 		
 		if(SingleMode.restTime < 5000  && SingleMode.restTime > 500  && Launcher.isSingleMode) {
 			int i = (int) SingleMode.restTime/1000;

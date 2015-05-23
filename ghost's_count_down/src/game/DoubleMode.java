@@ -7,13 +7,14 @@ import service.Set;
 public class DoubleMode extends Mode{
 	
 	public static boolean toDraw;
-	boolean turnToLeft = true;
+	public static boolean turnToLeft = true;
 	public static boolean FormerWin    = false;
 	public static boolean LaterWin     = false;
 	
 	public DoubleMode(Set s,Launcher l){
 		super(s);
 		launcher = l;
+		turnToLeft = true;
 		FormerWin    = false;
 		LaterWin     = false;
 		toDraw = false;
@@ -82,7 +83,8 @@ public class DoubleMode extends Mode{
 		    }
 		}
 		number --;
-		this.turnToLeft = ! this.turnToLeft;
+		DoubleMode.turnToLeft = ! DoubleMode.turnToLeft;
+		launcher.gamePanel.repaint();
  		}
 		
 	}

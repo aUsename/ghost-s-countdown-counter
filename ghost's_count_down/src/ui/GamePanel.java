@@ -1,6 +1,9 @@
 package ui;
 
 
+import game.DoubleMode;
+import game.Launcher;
+
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -31,9 +34,10 @@ public class GamePanel extends JPanel{
   	public ImageIcon iconMusicOff= new ImageIcon("button"+File.separator+"bgmOff.png");
   	public ImageIcon iconSoundOn = new ImageIcon("button"+File.separator+"soundSpecialOn.png");
   	public ImageIcon iconSoundOff= new ImageIcon("button"+File.separator+"soundSpecialOff.png");
-  	public ImageIcon iconBack    = new ImageIcon("button"+File.separator+"back.png");
+  	public ImageIcon iconBack    = new ImageIcon("button"+File.separator+"return.png");
   	
   	
+	 
   	
     public GamePanel(){
     	setLayout(null);
@@ -56,7 +60,7 @@ public class GamePanel extends JPanel{
          panel.add(back);
          panel.add(pause);
          panel.add(soundOn);
-         
+        
     }
     
     public void addComponent(){
@@ -82,6 +86,11 @@ public class GamePanel extends JPanel{
     	back.setOpaque(false);
     	musicOn.setOpaque(false);
     	soundOn.setOpaque(false);
+    	
+    	pause.setBorder(null);
+    	back.setBorder(null);
+    	musicOn.setBorder(null);
+    	soundOn.setBorder(null);
     	
     	iconMusicOn  = new ImageIcon(iconMusicOn. getImage().getScaledInstance(panel.getWidth(), panel.getHeight()/4, Image.SCALE_DEFAULT));
     	iconMusicOff = new ImageIcon(iconMusicOff.getImage().getScaledInstance(panel.getWidth(), panel.getHeight()/4, Image.SCALE_DEFAULT));
@@ -111,6 +120,7 @@ public class GamePanel extends JPanel{
     	super.paintComponent(g);
 	    Image image = icon.getImage(); 
     	g.drawImage(image, 0, 0, getWidth(),getHeight(),0,0,image.getWidth(null),image.getHeight(null),this);  
+    	
     }
 
 }

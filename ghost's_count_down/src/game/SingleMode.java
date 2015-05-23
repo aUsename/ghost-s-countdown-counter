@@ -119,7 +119,7 @@ public class SingleMode extends Mode{
 			clockPanel.pointers.repaint();
 		}
 
-		if(launcher.currentMode.isOnGame){
+		if(launcher.currentMode.isOnGame ){
 			launcher.upgrade();
 		}
 	}

@@ -15,11 +15,12 @@ public class ChoicePanel extends JPanel implements Runnable {
      /**
 	 * 
 	 */
-	private static final long serialVersionUID = -5228140076190713934L;
-	public SingleButton single ;
+	 private static final long serialVersionUID = -5228140076190713934L;
+	 public SingleButton single ;
      public DoubleButton doub ;
      public ExitButton   exit ;
      public IntroductionButton  intr ;
+     StoryPanel story= new StoryPanel();
      public int y=-520;
  	 public int x=-900;
  	
@@ -35,15 +36,6 @@ public class ChoicePanel extends JPanel implements Runnable {
     	 doub = new DoubleButton(a,b) ;
     	 exit = new ExitButton(a,b);
     	 intr = new IntroductionButton(a, b);
-    	 
-    	/* add(single);
-    	 single.setBounds(0,0,a,b);
-    	 add(doub);
-    	 doub.setBounds(0,b,a,b);
-    	 add(exit);
-    	 exit.setBounds(0,2*b,a,b);
-    	 add(intr);
-    	 intr.setBounds(0,3*b,a,b);*/
     
     	 setLayout(null);
  		setOpaque(false);
@@ -60,14 +52,18 @@ public class ChoicePanel extends JPanel implements Runnable {
  		TransparentPanel tp= new TransparentPanel();
  		add(tp);
  		tp.setBounds(800, 0, 300, 700);
+      
+ 		add(story);
+ 		story.setBounds(50,50,700,700);
      }
-     
-     public void paint(Graphics g){
+     @Override
+     public void paintComponent(Graphics g){
  		Image background = null;
  		String filepath = "background"+File.separator+"star1.png";
  		background = new ImageIcon(filepath).getImage();
  		g.drawImage(background,x,y,2000,1226,this);
- 		//g.drawImage(background,0,0,getWidth(),getHeight(),0,0,background.getWidth(null),background.getHeight( null),null);		
+ 		//g.drawImage(background,0,0,getWidth(),getHeight(),4
+ 		//0,0,background.getWidth(null),background.getHeight( null),null);		
  		super.paintChildren(g);
  	}
 
@@ -165,9 +161,6 @@ public class ChoicePanel extends JPanel implements Runnable {
 //      }
 //      
 //      
-     public void paintComponent(Graphics g){
-    	 g.setColor(Color.white);
-    	 g.fillRect(0, 0, getWidth(), getHeight());
-     }
+
 	
 }

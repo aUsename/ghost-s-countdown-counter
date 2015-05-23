@@ -16,6 +16,7 @@ import ui.EnterPanel;
 import ui.Frame;
 import ui.GamePanel;
 import ui.RegisterPanel;
+import ui.Rule;
 import ui.SetPanel;
 import ui.SplashWindow;
 
@@ -23,7 +24,7 @@ import ui.SplashWindow;
 public class Launcher implements KeyListener{
 	
 	
-        boolean      isOnGame     = false; 
+        public static boolean      isOnGame     = false; 
 	    Mode         currentMode; 
 	    public static boolean      isSingleMode = true; 
 	    Frame        frame        = new Frame();
@@ -124,8 +125,7 @@ public class Launcher implements KeyListener{
 				public void actionPerformed(ActionEvent e) {
 					// TODO Auto-generated method stub
 					new Thread(soundButton).start();
-					new SetPanel(choicePanel.getWidth()/3,choicePanel.getHeight()/2,setter);
-				    
+					new Rule();
 				}
 	        	
 	        });
@@ -318,7 +318,7 @@ public class Launcher implements KeyListener{
 					if(isSingleMode)
 						currentMode.launch();
 					else{
-						if(!((DoubleMode)currentMode).turnToLeft){
+						if(!DoubleMode.turnToLeft){
 							currentMode.launch();
 						}
 					}
@@ -326,7 +326,7 @@ public class Launcher implements KeyListener{
 				}
 			}else if(e.getKeyCode()==KeyEvent.VK_A){
 			    if(isOnGame && !isSingleMode){
-			    	if(((DoubleMode)currentMode).turnToLeft){
+			    	if(DoubleMode.turnToLeft){
 			    		currentMode.launch();
 			    	}
 			    }
@@ -345,6 +345,7 @@ public class Launcher implements KeyListener{
 				
 			}
 			
+			
 			if(e.getKeyCode() == Set.shortcutBack){
 				comeback();
 			}
@@ -356,6 +357,23 @@ public class Launcher implements KeyListener{
 			if(e.getKeyCode()== Set.shortcutDown){
 				setter.setVolumeOfMusic(-1);
 				
+			}
+			
+			if(e.getKeyCode()==KeyEvent.VK_U){
+				setter.setMusic(!Set.isMusicOn);
+				setter.setSound(!Set.isSoundOn);
+				if(!Set.isMusicOn){
+					gamePanel.musicOn.setIcon(gamePanel.iconMusicOff);
+				}else{
+					gamePanel.musicOn.setIcon(gamePanel.iconMusicOn);
+				}
+				gamePanel.musicOn.repaint();
+				if(!Set.isSoundOn){
+					gamePanel.soundOn.setIcon(gamePanel.iconSoundOff);
+				}else{
+					gamePanel.soundOn.setIcon(gamePanel.iconSoundOn);
+				}
+				gamePanel.soundOn.repaint();
 			}
 		}
 
